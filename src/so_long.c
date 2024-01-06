@@ -6,8 +6,17 @@
 /*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 22:46:12 by carmeno           #+#    #+#             */
-/*   Updated: 2024/01/06 22:46:13 by carmeno          ###   ########.fr       */
+/*   Updated: 2024/01/07 00:33:18 by carmeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "so_long.h"
 
+int main (void)
+{
+	char *saludo = "hola";
+	
+	ft_putstr_fd("libft ok\n", 1);
+	ft_printf("printf ok %s\n", saludo);
+	return (0);
+}
