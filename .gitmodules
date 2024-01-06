@@ -1,0 +1,9 @@
+[submodule "library/libft"]
+	path = library/libft
+	url = git@github.com:Droied4/Libft.git
+[submodule "library/minilibx"]
+	path = library/minilibx
+	url = git@github.com:42Paris/minilibx-linux.git
+[submodule "library/printf"]
+	path = library/printf
+	url = git@github.com:Droied4/printf.git
