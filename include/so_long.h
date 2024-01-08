@@ -6,7 +6,7 @@
 /*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 22:46:45 by carmeno           #+#    #+#             */
-/*   Updated: 2024/01/08 03:30:37 by carmeno          ###   ########.fr       */
+/*   Updated: 2024/01/08 04:41:51 by carmeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,19 @@ typedef struct s_data_img
 	int		endian;
 }			t_data_img;
 
-typedef struct s_color
+typedef struct s_colors
 {
 	int		red;
-	int		blue;
-	int		yellow;
-	int		cyan;
-	int		brown;
-	int		magenta;
-	int		orange;
 	int		green;
+	int		blue;
 	int		black;
 	int		white;
-}			t_color;
+	int		yellow;
+	int		magenta;
+	int		cyan;
+	int		brown;
+	int		orange;
+	int		purple;
+}			t_colors;
 
 #endif
