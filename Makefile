@@ -6,7 +6,7 @@
 #    By: carmeno <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 22:34:39 by carmeno           #+#    #+#              #
-#    Updated: 2024/01/08 04:40:57 by carmeno          ###   ########.fr        #
+#    Updated: 2024/01/09 19:14:00 by deordone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,19 @@
 #                               SO_LONG                                        #
 # ╚══════════════════════════════════════════════════════════════════════════╝ #  
 NAME        = so_long
+OS = $(shell uname)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE_PATH) -MMD -MF $(@:.o=.d)
-MLXFLAGS = -lX11 -lXext -lm 
+
+ifeq ($(OS), Darwin)
+	MLXFLAGS = -framework OpenGL -framework AppKit -lm
+endif
+ifeq ($(OS), Linux)
+	MLXFLAGS = -lX11 -lXext -lm 
+endif
+
+
+#MLXFLAGS = -lX11 -lXext -lm 
 
 # ╔══════════════════════════════════════════════════════════════════════════╗ #  
 #                               SOURCES                                        #
@@ -83,11 +93,11 @@ $(PRINTF) :
 
 $(MINILIBX) :
 	@printf "$(CYAN)Compiling $@$(NC)\n";
-	@make -C $(MINILIBX_PATH) > /dev/null 2>&1
+	@make -C $(MINILIBX_PATH) > /dev/null
 
 $(MINILIBX_LINUX) :
 	@printf "$(CYAN)Compiling $@$(NC)\n";
-	@make -C $(MINILIBX_PATH) > /dev/null 2>&1
+	@make -C $(MINILIBX_PATH) > /dev/null 
 clean:
 	@printf "$(CYAN)Cleaning objects and libraries$(NC)\n";
 	@rm -rf $(OBJECTS_PATH) 
