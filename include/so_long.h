@@ -6,7 +6,7 @@
 /*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 22:46:45 by carmeno           #+#    #+#             */
-/*   Updated: 2024/01/08 04:41:51 by carmeno          ###   ########.fr       */
+/*   Updated: 2024/01/14 21:39:54 by carmeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,21 @@
 # include "../library/libft/libft.h"
 # include "../library/minilibx/mlx.h"
 # include "../library/printf/ft_printf.h"
-
+//# include "sprites.h"
 /*Datos para las imagenes*/
-typedef struct s_data_img
+typedef struct s_img
 {
-	void		*img;
+	void		*image;
 	char		*addr;
 	int		bpp;
 	int		l_line;
 	int		endian;
-}			t_data_img;
+}			t_img;
+
+typedef struct s_vector2d {
+	int	x;
+	int	y;
+}		t_vector2d;
 
 typedef struct s_colors
 {
@@ -40,5 +45,31 @@ typedef struct s_colors
 	int		orange;
 	int		purple;
 }			t_colors;
+
+/*
+ *	SHAPES
+ *
+ * */
+
+void	draw_triangle (t_img);
+void	draw_cube (t_img);
+void	draw_circle(t_img img, int center_x, int center_y, int radius);
+
+/*
+ *
+ *	ALGORITMOS
+ *
+ * */
+
+void    dda_line(t_img img, t_vector2d p1, t_vector2d p2);
+
+/*
+ *
+ * UTILS
+ *
+ * */
+
+void    my_pixel_put(t_img *data, int x, int y, int color);
+
 
 #endif

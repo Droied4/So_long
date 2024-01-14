@@ -6,7 +6,7 @@
 #    By: carmeno <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 22:34:39 by carmeno           #+#    #+#              #
-#    Updated: 2024/01/09 19:14:00 by deordone         ###   ########.fr        #
+#    Updated: 2024/01/14 21:14:58 by carmeno          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,26 +14,16 @@
 #                               SO_LONG                                        #
 # ╚══════════════════════════════════════════════════════════════════════════╝ #  
 NAME        = so_long
-OS = $(shell uname)
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE_PATH) -MMD -MF $(@:.o=.d)
-
-ifeq ($(OS), Darwin)
-	MLXFLAGS = -framework OpenGL -framework AppKit -lm
-endif
-ifeq ($(OS), Linux)
-	MLXFLAGS = -lX11 -lXext -lm 
-endif
-
-
-#MLXFLAGS = -lX11 -lXext -lm 
+CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE_PATH) -MMD -MF $(@:.o=.d) -g
+MLXFLAGS = -lX11 -lXext -lm 
 
 # ╔══════════════════════════════════════════════════════════════════════════╗ #  
 #                               SOURCES                                        #
 # ╚══════════════════════════════════════════════════════════════════════════╝ #  
 
 SOURCES_PATH    = ./src
-OBJECTS_PATH    = ./obj
+OBJECTS_PATH    = ./build
 INCLUDE_PATH    = ./include
 LIBRARY_PATH	= ./library
 LIBFT_PATH	= $(LIBRARY_PATH)/libft
@@ -46,7 +36,7 @@ MINILIBX = $(MINILIBX_PATH)/libmlx.a
 MINILIBX_LINUX = $(MINILIBX_PATH)/libmlx_Linux.a
 
 HEADER = $(INCLUDE_PATH)/so_long.h
-SOURCES = so_long.c colors.c
+SOURCES = aprender.c colors.c shapes.c
 
 # ╔══════════════════════════════════════════════════════════════════════════╗ #  
 #                               OBJECTS                                        #
@@ -83,6 +73,8 @@ $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c $(HEADER) Makefile
 		@mkdir -p $(dir $@)
 		@$(CC) $(CFLAGS) -c $< -o $@ 
 
+bonus : header $(NAME)
+
 $(LIBFT) :
 	@printf "$(CYAN)Compiling $@$(NC)\n";
 	@make -C $(LIBFT_PATH) > /dev/null
@@ -93,11 +85,11 @@ $(PRINTF) :
 
 $(MINILIBX) :
 	@printf "$(CYAN)Compiling $@$(NC)\n";
-	@make -C $(MINILIBX_PATH) > /dev/null
+	@make -C $(MINILIBX_PATH) > /dev/null 2>&1
 
 $(MINILIBX_LINUX) :
 	@printf "$(CYAN)Compiling $@$(NC)\n";
-	@make -C $(MINILIBX_PATH) > /dev/null 
+	@make -C $(MINILIBX_PATH) > /dev/null 2>&1
 clean:
 	@printf "$(CYAN)Cleaning objects and libraries$(NC)\n";
 	@rm -rf $(OBJECTS_PATH) 
@@ -111,8 +103,6 @@ fclean : clean
 	@make fclean -C $(LIBFT_PATH) > /dev/null
 	@make fclean -C $(PRINTF_PATH) > /dev/null
 	@make clean -C $(MINILIBX_PATH)> /dev/null 2>&1
-
-re: fclean all 
 
 header: 
 	@echo
@@ -155,4 +145,6 @@ author:
 	@printf "$(CYAN)		        	https://github.com/Droied4 \n";
 	@printf "\n";
 
-.PHONY: all clean fclean re
+re: fclean all 
+
+.PHONY: all clean fclean re bonus
