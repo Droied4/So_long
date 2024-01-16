@@ -6,14 +6,15 @@
 /*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 22:46:45 by carmeno           #+#    #+#             */
-/*   Updated: 2024/01/14 21:39:54 by carmeno          ###   ########.fr       */
+/*   Updated: 2024/01/16 14:37:04 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # include "../library/libft/libft.h"
-# include "../library/minilibx/mlx.h"
+//# include "../library/minilibx_linux/mlx.h"
+# include "../library/minilibx_mac/mlx.h"
 # include "../library/printf/ft_printf.h"
 //# include "sprites.h"
 /*Datos para las imagenes*/

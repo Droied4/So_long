@@ -6,7 +6,7 @@
 #    By: carmeno <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 22:34:39 by carmeno           #+#    #+#              #
-#    Updated: 2024/01/14 21:14:58 by carmeno          ###   ########.fr        #
+#    Updated: 2024/01/16 14:33:28 by deordone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,29 +14,41 @@
 #                               SO_LONG                                        #
 # ╚══════════════════════════════════════════════════════════════════════════╝ #  
 NAME        = so_long
+OS = $(shell uname)
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE_PATH) -MMD -MF $(@:.o=.d) -g
-MLXFLAGS = -lX11 -lXext -lm 
+CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE_PATH) -MMD -MF $(@:.o=.d)
+
+ifeq ($(OS), Darwin)
+	MLXFLAGS = -framework OpenGL -framework AppKit -lm
+endif
+ifeq ($(OS), Linux)
+	MLXFLAGS = -lX11 -lXext -lm 
+endif
+
+
+#MLXFLAGS = -lX11 -lXext -lm 
 
 # ╔══════════════════════════════════════════════════════════════════════════╗ #  
 #                               SOURCES                                        #
 # ╚══════════════════════════════════════════════════════════════════════════╝ #  
 
 SOURCES_PATH    = ./src
-OBJECTS_PATH    = ./build
+OBJECTS_PATH    = ./obj
 INCLUDE_PATH    = ./include
 LIBRARY_PATH	= ./library
 LIBFT_PATH	= $(LIBRARY_PATH)/libft
 PRINTF_PATH	= $(LIBRARY_PATH)/printf
-MINILIBX_PATH    = $(LIBRARY_PATH)/minilibx
+LINUX_MINILIBX_PATH    = $(LIBRARY_PATH)/minilibx_linux
+MAC_MINILIBX_PATH = $(LIBRARY_PATH)/minilibx_mac
 
 LIBFT = $(LIBFT_PATH)/libft.a
 PRINTF = $(PRINTF_PATH)/libftprintf.a
-MINILIBX = $(MINILIBX_PATH)/libmlx.a
-MINILIBX_LINUX = $(MINILIBX_PATH)/libmlx_Linux.a
+MINILIBX_MAC = $(MAC_MINILIBX_PATH)/libmlx.a
+#MINILIBX = $(LINUX_MINILIBX_PATH)/libmlx.a
+MINILIBX_LINUX = $(LINUX_MINILIBX_PATH)/libmlx_Linux.a
 
 HEADER = $(INCLUDE_PATH)/so_long.h
-SOURCES = aprender.c colors.c shapes.c
+SOURCES = so_long.c colors.c
 
 # ╔══════════════════════════════════════════════════════════════════════════╗ #  
 #                               OBJECTS                                        #
@@ -64,7 +76,7 @@ NC=\033[0m # No color
 all: header $(NAME)
 
 -include $(DEPS)
-$(NAME): $(OBJECTS) $(LIBFT) $(PRINTF) $(MINILIBX) $(MINILIBX_LINUX) 
+$(NAME): $(OBJECTS) $(LIBFT) $(PRINTF) $(MINILIBX_MAC)  #$(MINILIBX_LINUX) 
 	@printf "$(CYAN)$@ Compiled$(NC)\n";
 	@$(CC) $(CFLAGS) $^ -o $(NAME) $(MLXFLAGS)
 
@@ -72,8 +84,6 @@ $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.c $(HEADER) Makefile
 		@printf "$(CYAN)Compiling $@$(NC)\n";
 		@mkdir -p $(dir $@)
 		@$(CC) $(CFLAGS) -c $< -o $@ 
-
-bonus : header $(NAME)
 
 $(LIBFT) :
 	@printf "$(CYAN)Compiling $@$(NC)\n";
@@ -83,30 +93,39 @@ $(PRINTF) :
 	@printf "$(CYAN)Compiling $@$(NC)\n";
 	@make -C $(PRINTF_PATH) > /dev/null
 
-$(MINILIBX) :
-	@printf "$(CYAN)Compiling $@$(NC)\n";
-	@make -C $(MINILIBX_PATH) > /dev/null 2>&1
+#$(MINILIBX) :
+#	@printf "$(CYAN)Compiling $@$(NC)\n";
+#	@make -C $(MINILIBX_PATH) > /dev/null
 
-$(MINILIBX_LINUX) :
+$(MINILIBX_MAC) :
 	@printf "$(CYAN)Compiling $@$(NC)\n";
-	@make -C $(MINILIBX_PATH) > /dev/null 2>&1
+	@make -C $(MAC_MINILIBX_PATH) > /dev/null 
+
+#$(MINILIBX_LINUX) :
+#	@printf "$(CYAN)Compiling $@$(NC)\n";
+#	@make -C $(LINUX_MINILIBX_PATH) > /dev/null 
+
 clean:
 	@printf "$(CYAN)Cleaning objects and libraries$(NC)\n";
 	@rm -rf $(OBJECTS_PATH) 
 	@make clean -C $(LIBFT_PATH) > /dev/null
 	@make clean -C $(PRINTF_PATH) > /dev/null
-	@make clean -C $(MINILIBX_PATH)> /dev/null 2>&1
+#	@make clean -C $(LINUX_MINILIBX_PATH)> /dev/null 2>&1
+	@make clean -C $(MAC_MINILIBX_PATH)> /dev/null 2>&1
 
 fclean : clean
 	@printf "$(CYAN)Cleaning objects, libraries and executable$(NC)\n";
 	@rm -rf $(NAME)
 	@make fclean -C $(LIBFT_PATH) > /dev/null
 	@make fclean -C $(PRINTF_PATH) > /dev/null
-	@make clean -C $(MINILIBX_PATH)> /dev/null 2>&1
+#	@make clean -C $(LINUX_MINILIBX_PATH)> /dev/null 2>&1
+	@make clean -C $(MAC_MINILIBX_PATH)> /dev/null 2>&1
+
+re: fclean all 
 
 header: 
 	@echo
-	@printf "$(RED)		  ══════════════════════════「₪」══════════════════════════\n";
+	@printf "$(RED)		  ══════════════════════════$(WHITE)「₪」$(RED)══════════════════════════$(GREEN)\n";
 	@echo
 	@printf "     	          $(YELLOW)                      ▒▒▒▒▒▒▒▒▒   ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒\n";
 	@printf "	     	                      ▒▒▒▒▒▒▒▒▒     ▒▒▒▒▒▒  ▒▒▒▒▒▒▒▒\n";
@@ -124,7 +143,9 @@ header:
 	@printf "	    	         ░░░░░  $(BLUE) ░░░░░░░$(YELLOW) ▒▒▒▒▒▒▒▒      ╰┈➤$(NAME) \n";
 	@printf "	     	          ░░░░░ $(BLUE) ░ ░ ░ ░$(YELLOW) ▒▒▒▒▒▒▒▒$(NC)\n";
 	@echo
-	@printf "$(RED)		  ══════════════════════════「₪」══════════════════════════$(GREEN)\n";
+	@printf "\n $(RED)	   ╔══════════════════════════════════════════════════════════════════════════╗$(NC)\n"
+	@printf "$(WHITE)      	       • • ᗣ • • • • • • • • ᗧ • • ᗣ • • • • • • • • • • ᗣ • • • • • • • •$(NC)\n"
+	@printf "  $(RED)	   ╚══════════════════════════════════════════════════════════════════════════╝$(NC)\n"
 	@echo
  
 help: 
@@ -145,6 +166,4 @@ author:
 	@printf "$(CYAN)		        	https://github.com/Droied4 \n";
 	@printf "\n";
 
-re: fclean all 
-
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
