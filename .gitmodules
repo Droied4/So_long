@@ -1,6 +1,6 @@
 [submodule "library/libft"]
 	path = library/libft
-	url = git@github.com:Droied4/Libft.git
+	url = git@github.com:Droied4/libft.git
 [submodule "library/minilibx_linux"]
 	path = library/minilibx_linux
 	url = git@github.com:42Paris/minilibx-linux.git

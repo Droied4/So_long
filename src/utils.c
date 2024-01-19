@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/14 21:26:34 by carmeno           #+#    #+#             */
-/*   Updated: 2024/01/14 21:27:08 by carmeno          ###   ########.fr       */
+/*   Created: 2024/01/19 12:46:16 by deordone          #+#    #+#             */
+/*   Updated: 2024/01/19 12:47:49 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long"
+#include "so_long.h"
 
 void    my_pixel_put(t_img *data, int x, int y, int color)
 {

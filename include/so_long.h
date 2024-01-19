@@ -6,7 +6,7 @@
 /*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 22:46:45 by carmeno           #+#    #+#             */
-/*   Updated: 2024/01/16 14:37:04 by deordone         ###   ########.fr       */
+/*   Updated: 2024/01/19 13:56:59 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,14 @@ typedef struct s_img
 	int		l_line;
 	int		endian;
 }			t_img;
+
+typedef struc s_map
+{
+	char	**map;
+	int		height_map;
+	int		width_map;
+	int		fd_map;
+}			t_map;
 
 typedef struct s_vector2d {
 	int	x;

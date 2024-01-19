@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/06 22:46:12 by carmeno           #+#    #+#             */
-/*   Updated: 2024/01/14 16:16:23 by carmeno          ###   ########.fr       */
+/*   Created: 2024/01/19 12:46:04 by deordone          #+#    #+#             */
+/*   Updated: 2024/01/19 12:48:06 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	my_pixel_put(t_img *data, int x, int y, int color)
-{
-	char *dst;
-
-	dst = data->addr + (y * data->l_line + x * (data->bpp / 8));
-	*(unsigned int*)dst = color;
-}
 
 int	main(void)
 {
@@ -43,7 +35,9 @@ int	main(void)
 	else
 	{
         	mlx_put_image_to_window(mlx, mlx_win, img.image, 100, 100);
-        	mlx_put_image_to_window(mlx, mlx_win, img.image, 110, 110);
+        	mlx_put_image_to_window(mlx, mlx_win, img.image, 132, 116);
+        	mlx_put_image_to_window(mlx, mlx_win, img.image, 164, 132);
+        	mlx_put_image_to_window(mlx, mlx_win, img.image, 196, 148);
 	}	
 	mlx_loop(mlx);
 	return (0);

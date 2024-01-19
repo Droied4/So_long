@@ -6,7 +6,7 @@
 #    By: carmeno <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 22:34:39 by carmeno           #+#    #+#              #
-#    Updated: 2024/01/16 14:33:28 by deordone         ###   ########.fr        #
+#    Updated: 2024/01/19 13:17:53 by deordone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,6 @@ ifeq ($(OS), Linux)
 	MLXFLAGS = -lX11 -lXext -lm 
 endif
 
-
-#MLXFLAGS = -lX11 -lXext -lm 
-
 # ╔══════════════════════════════════════════════════════════════════════════╗ #  
 #                               SOURCES                                        #
 # ╚══════════════════════════════════════════════════════════════════════════╝ #  
@@ -38,17 +35,18 @@ INCLUDE_PATH    = ./include
 LIBRARY_PATH	= ./library
 LIBFT_PATH	= $(LIBRARY_PATH)/libft
 PRINTF_PATH	= $(LIBRARY_PATH)/printf
+GNLINE_PATH	= $(LIBRARY_PATH)/get_next_line
 LINUX_MINILIBX_PATH    = $(LIBRARY_PATH)/minilibx_linux
 MAC_MINILIBX_PATH = $(LIBRARY_PATH)/minilibx_mac
 
 LIBFT = $(LIBFT_PATH)/libft.a
 PRINTF = $(PRINTF_PATH)/libftprintf.a
+GNLINE = $(GNLINE_PATH)/get_next_line.a
 MINILIBX_MAC = $(MAC_MINILIBX_PATH)/libmlx.a
-#MINILIBX = $(LINUX_MINILIBX_PATH)/libmlx.a
 MINILIBX_LINUX = $(LINUX_MINILIBX_PATH)/libmlx_Linux.a
 
 HEADER = $(INCLUDE_PATH)/so_long.h
-SOURCES = so_long.c colors.c
+SOURCES = so_long.c colors.c utils.c
 
 # ╔══════════════════════════════════════════════════════════════════════════╗ #  
 #                               OBJECTS                                        #
@@ -76,7 +74,7 @@ NC=\033[0m # No color
 all: header $(NAME)
 
 -include $(DEPS)
-$(NAME): $(OBJECTS) $(LIBFT) $(PRINTF) $(MINILIBX_MAC)  #$(MINILIBX_LINUX) 
+$(NAME): $(OBJECTS) $(LIBFT) $(PRINTF) $(GNLINE) $(MINILIBX_MAC)  #$(MINILIBX_LINUX) 
 	@printf "$(CYAN)$@ Compiled$(NC)\n";
 	@$(CC) $(CFLAGS) $^ -o $(NAME) $(MLXFLAGS)
 
@@ -93,23 +91,24 @@ $(PRINTF) :
 	@printf "$(CYAN)Compiling $@$(NC)\n";
 	@make -C $(PRINTF_PATH) > /dev/null
 
-#$(MINILIBX) :
-#	@printf "$(CYAN)Compiling $@$(NC)\n";
-#	@make -C $(MINILIBX_PATH) > /dev/null
+$(GNLINE) :
+	@printf "$(CYAN)Compiling $@$(NC)\n";
+	@make -C $(GNLINE_PATH) > /dev/null
 
 $(MINILIBX_MAC) :
 	@printf "$(CYAN)Compiling $@$(NC)\n";
 	@make -C $(MAC_MINILIBX_PATH) > /dev/null 
 
-#$(MINILIBX_LINUX) :
-#	@printf "$(CYAN)Compiling $@$(NC)\n";
-#	@make -C $(LINUX_MINILIBX_PATH) > /dev/null 
+$(MINILIBX_LINUX) :
+	@printf "$(CYAN)Compiling $@$(NC)\n";
+	@make -C $(LINUX_MINILIBX_PATH) > /dev/null 
 
 clean:
 	@printf "$(CYAN)Cleaning objects and libraries$(NC)\n";
 	@rm -rf $(OBJECTS_PATH) 
 	@make clean -C $(LIBFT_PATH) > /dev/null
 	@make clean -C $(PRINTF_PATH) > /dev/null
+	@make clean -C $(GNLINE_PATH) > /dev/null
 #	@make clean -C $(LINUX_MINILIBX_PATH)> /dev/null 2>&1
 	@make clean -C $(MAC_MINILIBX_PATH)> /dev/null 2>&1
 
@@ -118,6 +117,7 @@ fclean : clean
 	@rm -rf $(NAME)
 	@make fclean -C $(LIBFT_PATH) > /dev/null
 	@make fclean -C $(PRINTF_PATH) > /dev/null
+	@make fclean -C $(GNLINE_PATH) > /dev/null
 #	@make clean -C $(LINUX_MINILIBX_PATH)> /dev/null 2>&1
 	@make clean -C $(MAC_MINILIBX_PATH)> /dev/null 2>&1
 
