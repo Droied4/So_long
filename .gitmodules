@@ -1,9 +1,12 @@
 [submodule "library/libft"]
 	path = library/libft
 	url = git@github.com:Droied4/Libft.git
-[submodule "library/minilibx"]
-	path = library/minilibx
+[submodule "library/minilibx_linux"]
+	path = library/minilibx_linux
 	url = git@github.com:42Paris/minilibx-linux.git
 [submodule "library/printf"]
 	path = library/printf
 	url = git@github.com:Droied4/printf.git
+[submodule "library/get_next_line"]
+	path = library/get_next_line
+	url = git@github.com:Droied4/get_next_line.git
