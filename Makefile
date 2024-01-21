@@ -6,7 +6,7 @@
 #    By: carmeno <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 22:34:39 by carmeno           #+#    #+#              #
-#    Updated: 2024/01/21 13:32:15 by deordone         ###   ########.fr        #
+#    Updated: 2024/01/21 13:37:55 by deordone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ MAC_MINILIBX_PATH = $(LIBRARY_PATH)/minilibx_mac
 
 LIBFT = $(LIBFT_PATH)/libft.a
 PRINTF = $(PRINTF_PATH)/libftprintf.a
-DPRINTF = $(DPRINTF_PATH)/libftprintf.a
+DPRINTF = $(DPRINTF_PATH)/libftdprintf.a
 GNLINE = $(GNLINE_PATH)/get_next_line.a
 MINILIBX_MAC = $(MAC_MINILIBX_PATH)/libmlx.a
 MINILIBX_LINUX = $(LINUX_MINILIBX_PATH)/libmlx_Linux.a
@@ -76,7 +76,7 @@ NC=\033[0m # No color
 all: header $(NAME)
 
 -include $(DEPS)
-$(NAME): $(OBJECTS) $(LIBFT) $(PRINTF) $(GNLINE) $(MINILIBX_MAC)  #$(MINILIBX_LINUX) 
+$(NAME): $(OBJECTS) $(LIBFT) $(PRINTF) $(DPRINTF) $(GNLINE) $(MINILIBX_MAC)  #$(MINILIBX_LINUX) 
 	@printf "$(CYAN)$@ Compiled$(NC)\n";
 	@$(CC) $(CFLAGS) $^ -o $(NAME) $(MLXFLAGS)
 
