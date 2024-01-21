@@ -1,42 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_error.c                                        :+:      :+:    :+:   */
+/*   ft_dputstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 11:03:36 by deordone          #+#    #+#             */
-/*   Updated: 2024/01/21 13:31:19 by deordone         ###   ########.fr       */
+/*   Created: 2023/10/04 07:55:37 by deordone          #+#    #+#             */
+/*   Updated: 2024/01/14 22:25:45 by carmeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "ft_dprintf.h"
 
-void	ft_map_error(t_map *map, char *message)
-{
-	ft_free_array(map->map);
-	ft_dprintf(2, message);
-	exit(1);
-}
-
-void	ft_sl_error(char *message)
-{
-	ft_dprintf(2, message);
-	exit(1);
-}
-
-void	ft_free_array(char **res)
+int	ft_dputstr(int fd, const char *str)
 {
 	int	i;
 
 	i = 0;
-	if (res)
+	if (!str)
+		return (ft_dputstr(fd, "(null)"));
+	while (str[i])
 	{
-		while (res[i])
-			i++;
-		while (--i)
-			free(res[i]);
-		free(res[i]);
-		free(res);
+		if (write(fd, &str[i], 1) < 0)
+			return (-1);
+		i++;
 	}
+	return (i);
 }

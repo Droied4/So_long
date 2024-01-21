@@ -1,42 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_error.c                                        :+:      :+:    :+:   */
+/*   ft_dputhxaptr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 11:03:36 by deordone          #+#    #+#             */
-/*   Updated: 2024/01/21 13:31:19 by deordone         ###   ########.fr       */
+/*   Created: 2023/10/14 01:03:55 by deordone          #+#    #+#             */
+/*   Updated: 2024/01/14 22:32:17 by carmeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "ft_dprintf.h"
 
-void	ft_map_error(t_map *map, char *message)
+int	ft_dputhxaptr(int fd, unsigned long nb)
 {
-	ft_free_array(map->map);
-	ft_dprintf(2, message);
-	exit(1);
-}
+	char	*pointer_val;
+	int		count;
 
-void	ft_sl_error(char *message)
-{
-	ft_dprintf(2, message);
-	exit(1);
-}
-
-void	ft_free_array(char **res)
-{
-	int	i;
-
-	i = 0;
-	if (res)
+	count = 0;
+	pointer_val = "0123456789abcdef";
+	if (!nb)
+		return (ft_dputchar(fd, '0'));
+	if (nb > 15)
 	{
-		while (res[i])
-			i++;
-		while (--i)
-			free(res[i]);
-		free(res[i]);
-		free(res);
+		count = ft_dputhxaptr(fd, nb / 16);
+		if (count == -1)
+			return (-1);
 	}
+	if (ft_dputchar(fd, pointer_val[nb % 16]) == -1)
+		return (-1);
+	count++;
+	return (count);
 }

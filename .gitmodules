@@ -10,3 +10,6 @@
 [submodule "library/get_next_line"]
 	path = library/get_next_line
 	url = git@github.com:Droied4/get_next_line.git
+[submodule "ft_dprintf"]
+	path = ft_dprintf
+	url = https://github.com/Droied4/ft_dprintf

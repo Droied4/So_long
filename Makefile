@@ -6,7 +6,7 @@
 #    By: carmeno <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 22:34:39 by carmeno           #+#    #+#              #
-#    Updated: 2024/01/21 11:12:32 by deordone         ###   ########.fr        #
+#    Updated: 2024/01/21 13:32:15 by deordone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,18 +35,20 @@ INCLUDE_PATH    = ./include
 LIBRARY_PATH	= ./library
 LIBFT_PATH	= $(LIBRARY_PATH)/libft
 PRINTF_PATH	= $(LIBRARY_PATH)/printf
+DPRINTF_PATH	= $(LIBRARY_PATH)/dprintf
 GNLINE_PATH	= $(LIBRARY_PATH)/get_next_line
 LINUX_MINILIBX_PATH    = $(LIBRARY_PATH)/minilibx_linux
 MAC_MINILIBX_PATH = $(LIBRARY_PATH)/minilibx_mac
 
 LIBFT = $(LIBFT_PATH)/libft.a
 PRINTF = $(PRINTF_PATH)/libftprintf.a
+DPRINTF = $(DPRINTF_PATH)/libftprintf.a
 GNLINE = $(GNLINE_PATH)/get_next_line.a
 MINILIBX_MAC = $(MAC_MINILIBX_PATH)/libmlx.a
 MINILIBX_LINUX = $(LINUX_MINILIBX_PATH)/libmlx_Linux.a
 
 HEADER = $(INCLUDE_PATH)/so_long.h
-SOURCES = so_long.c maps.c maps_utils.c
+SOURCES = so_long.c maps.c maps_utils.c map_error.c
 
 # ╔══════════════════════════════════════════════════════════════════════════╗ #  
 #                               OBJECTS                                        #
@@ -91,6 +93,10 @@ $(PRINTF) :
 	@printf "$(CYAN)Compiling $@$(NC)\n";
 	@make -C $(PRINTF_PATH) > /dev/null
 
+$(DPRINTF) :
+	@printf "$(CYAN)Compiling $@$(NC)\n";
+	@make -C $(DPRINTF_PATH) > /dev/null
+
 $(GNLINE) :
 	@printf "$(CYAN)Compiling $@$(NC)\n";
 	@make -C $(GNLINE_PATH) > /dev/null
@@ -108,6 +114,7 @@ clean:
 	@rm -rf $(OBJECTS_PATH) 
 	@make clean -C $(LIBFT_PATH) > /dev/null
 	@make clean -C $(PRINTF_PATH) > /dev/null
+	@make clean -C $(DPRINTF_PATH) > /dev/null
 	@make clean -C $(GNLINE_PATH) > /dev/null
 #	@make clean -C $(LINUX_MINILIBX_PATH)> /dev/null 2>&1
 	@make clean -C $(MAC_MINILIBX_PATH)> /dev/null 2>&1
@@ -117,6 +124,7 @@ fclean : clean
 	@rm -rf $(NAME)
 	@make fclean -C $(LIBFT_PATH) > /dev/null
 	@make fclean -C $(PRINTF_PATH) > /dev/null
+	@make fclean -C $(DRINTF_PATH) > /dev/null
 	@make fclean -C $(GNLINE_PATH) > /dev/null
 #	@make clean -C $(LINUX_MINILIBX_PATH)> /dev/null 2>&1
 	@make clean -C $(MAC_MINILIBX_PATH)> /dev/null 2>&1
