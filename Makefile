@@ -6,7 +6,7 @@
 #    By: carmeno <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 22:34:39 by carmeno           #+#    #+#              #
-#    Updated: 2024/01/21 14:11:20 by deordone         ###   ########.fr        #
+#    Updated: 2024/01/21 15:48:19 by deordone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 NAME        = so_long
 OS = $(shell uname)
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE_PATH) -MMD -MF $(@:.o=.d)
+CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE_PATH) -g -MMD -MF $(@:.o=.d)
 
 ifeq ($(OS), Darwin)
 	MLXFLAGS = -framework OpenGL -framework AppKit -lm

@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:46:04 by deordone          #+#    #+#             */
-/*   Updated: 2024/01/21 13:01:42 by deordone         ###   ########.fr       */
+/*   Updated: 2024/01/21 15:45:40 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		ft_sl_error("so_long : two arguments are needed\n");
 	ft_map_existence(argv);
-	ft_printf("OK");
-	return (0);
-	/*
+	ft_printf("OK\n");
+//	return (0);
+	
 	void		*mlx;
 	void		*mlx_win;
 	int		width = 32;
@@ -47,5 +47,5 @@ int	main(int argc, char **argv)
 	}
 	mlx_loop(mlx);
 	return (0);
-	*/
+	
 }

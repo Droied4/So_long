@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:45:40 by deordone          #+#    #+#             */
-/*   Updated: 2024/01/21 13:15:38 by deordone         ###   ########.fr       */
+/*   Updated: 2024/01/21 15:43:36 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 /*void	ft_is_validmap(t_map *map)
 {
+check the flood fill
 }*/
 
-//map_components
+//map_components check if exist all the components
 
 void	ft_is_closemap(t_map *map)
 {
@@ -31,13 +32,15 @@ void ft_create_map(t_map *map, int fd)
 	char *line;
 	char *final_line;
 	
+	final_line = ft_calloc(1, 1);	
 	map->fd_map = fd;
 	line = get_next_line(map->fd_map);
 	if (!line)
+		ft_map_error(map, "so_long : empty file\n");
 	map->width_map = ft_strlen(line);
 	while (line)
 	{
-		map->height_map = map->height_map++;
+		map->height_map++;
 		map->bytes_map += ft_strlen(line);
 		final_line = ft_strjoin(final_line, line);
 		line = get_next_line(map->fd_map);
