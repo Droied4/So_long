@@ -6,14 +6,20 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:46:04 by deordone          #+#    #+#             */
-/*   Updated: 2024/01/19 12:48:06 by deordone         ###   ########.fr       */
+/*   Updated: 2024/01/21 11:12:00 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
+	if (argc != 2)
+		ft_sl_error("so_long : two arguments are needed\n");
+	ft_map_existence(argv);
+	ft_printf("OK");
+	return (0);
+	/*
 	void		*mlx;
 	void		*mlx_win;
 	int		width = 32;
@@ -21,7 +27,7 @@ int	main(void)
 	t_img		img;
 	char		*path = "./sprites/start.xpm";
 	
-
+	
 	mlx = mlx_init();
 	if (!mlx)
 		exit(1);
@@ -38,7 +44,8 @@ int	main(void)
         	mlx_put_image_to_window(mlx, mlx_win, img.image, 132, 116);
         	mlx_put_image_to_window(mlx, mlx_win, img.image, 164, 132);
         	mlx_put_image_to_window(mlx, mlx_win, img.image, 196, 148);
-	}	
+	}
 	mlx_loop(mlx);
 	return (0);
+	*/
 }

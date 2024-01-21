@@ -6,42 +6,64 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:45:40 by deordone          #+#    #+#             */
-/*   Updated: 2024/01/19 13:56:57 by deordone         ###   ########.fr       */
+/*   Updated: 2024/01/21 11:11:20 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-//is_validmap
-//map_components
-//is_closemap
-//is_rectangularmap
-//get_map 
 
-void get_map(char **argv)
+/*void	ft_is_validmap(t_map *map)
+{
+}*/
+
+//map_components
+
+void	ft_is_closemap(t_map *map);
+{
+	if (ft_check_horizontal_map(map) == 1 || ft_check_vertical_map(map) == 1)
+		ft_map_error(map, "so_long : unclosed map\n");
+	//ft_map_components(*/);
+}
+
+void ft_create_map(int fd)
 {
 	t_map map;
 	char *line;
 	char *final_line;
-//comprobar si argv1 existe y termina con .ber antes de esto
-	map.fd_map = open(argv[1], O_RDONLY);
-	if (!map.fd_map)
-		return (mensaje error no mapa*/);
+	char **map_char;
+	
+	map.fd_map = fd;
 	line = get_next_line(map.fd_map);
 	if (!line)
-		return (mensaje error no hay nada */)
+	map.width_map = ft_strlen(line);
 	while (line)
 	{
 		map.height_map = map.height_map++;
-		map.width_map = ft_strlen(line);
-		//crear funcion que compare el ancho con el anterior si es igual no pasa nada si es mayor o menor acaba con todo. isrectangularmap puede ser
+		map.bytes_map += ft_strlen(line);
 		final_line = ft_strjoin(final_line, line);
 		line = get_next_line(map.fd_map);
 	}
+	ft_check_rectangularmap(&map);
 	if (final_line)
-		hago un split*/
+		map.map = ft_split(final_line, '\n');
 	else
-		return (mensaje error no hay nada */)
+		ft_map_error(&map, "so_long : empty file\n");
+	ft_is_closemap(&map);
+}
 
-//dos get next line uno que me cuente cuantos caracteres hay y otro que me guarde en una matriz los caracteres del mapa	
+void	ft_map_existence(char **argv)
+{
+	int fd;
+	int l_mapath;
+	
+	l_mapath = ft_strlen(argv[1]);
+	l_mapath -= 4;
+	if (ft_strncmp(argv[1][l_mapath], ".ber", 4) != 0)
+		ft_sl_error("so_long : invalid map\n");
+	map.fd_map = open(argv[1], O_RDONLY);
+	if (!map.fd_map)
+		ft_sl_error("so_long : bad file descriptor\n");
+	else
+		ft_create_map(fd);
 }
