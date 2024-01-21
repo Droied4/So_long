@@ -6,7 +6,7 @@
 /*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 22:46:45 by carmeno           #+#    #+#             */
-/*   Updated: 2024/01/21 13:31:38 by deordone         ###   ########.fr       */
+/*   Updated: 2024/01/21 14:11:05 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_H
 # include "../library/libft/libft.h"
 # include "../library/printf/ft_printf.h"
-# include "../library/dprintf/ft_dprintf.h"
+# include "../library/ft_dprintf/ft_dprintf.h"
 //# include "../library/minilibx_linux/mlx.h"
 # include "../library/minilibx_mac/mlx.h"
 # include "../library/get_next_line/get_next_line.h"

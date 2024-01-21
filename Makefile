@@ -6,7 +6,7 @@
 #    By: carmeno <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 22:34:39 by carmeno           #+#    #+#              #
-#    Updated: 2024/01/21 13:37:55 by deordone         ###   ########.fr        #
+#    Updated: 2024/01/21 14:11:20 by deordone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ INCLUDE_PATH    = ./include
 LIBRARY_PATH	= ./library
 LIBFT_PATH	= $(LIBRARY_PATH)/libft
 PRINTF_PATH	= $(LIBRARY_PATH)/printf
-DPRINTF_PATH	= $(LIBRARY_PATH)/dprintf
+DPRINTF_PATH	= $(LIBRARY_PATH)/ft_dprintf
 GNLINE_PATH	= $(LIBRARY_PATH)/get_next_line
 LINUX_MINILIBX_PATH    = $(LIBRARY_PATH)/minilibx_linux
 MAC_MINILIBX_PATH = $(LIBRARY_PATH)/minilibx_mac
