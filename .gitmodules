@@ -13,3 +13,6 @@
 [submodule "ft_dprintf"]
 	path = ft_dprintf
 	url = https://github.com/Droied4/ft_dprintf
+[submodule "library/ft_dprintf"]
+	path = library/ft_dprintf
+	url = https://github.com/Droied4/ft_dprintf.git
