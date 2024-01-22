@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:45:40 by deordone          #+#    #+#             */
-/*   Updated: 2024/01/22 17:42:43 by deordone         ###   ########.fr       */
+/*   Updated: 2024/01/22 17:48:17 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	ft_map_components(t_map *map)
 	}
 	if (keeper[0] > 1)
 		ft_map_error(map, "so long : more than one player\n");
+	if (keeper[1] < 1 || keeper[2] < 1)
+		ft_map_error(map, "so long : no exit or no collectibles\n");
 }
 
 void	ft_is_closemap(t_map *map)
