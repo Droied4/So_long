@@ -6,7 +6,7 @@
 #    By: carmeno <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 22:34:39 by carmeno           #+#    #+#              #
-#    Updated: 2024/01/21 15:48:19 by deordone         ###   ########.fr        #
+#    Updated: 2024/01/23 22:19:17 by deordone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 NAME        = so_long
 OS = $(shell uname)
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE_PATH) -g -MMD -MF $(@:.o=.d)
+CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE_PATH) -MMD -MF $(@:.o=.d)
 
 ifeq ($(OS), Darwin)
 	MLXFLAGS = -framework OpenGL -framework AppKit -lm
@@ -103,11 +103,11 @@ $(GNLINE) :
 
 $(MINILIBX_MAC) :
 	@printf "$(CYAN)Compiling $@$(NC)\n";
-	@make -C $(MAC_MINILIBX_PATH) > /dev/null 
+	@make -C $(MAC_MINILIBX_PATH) > /dev/null 2>&1 
 
 $(MINILIBX_LINUX) :
 	@printf "$(CYAN)Compiling $@$(NC)\n";
-	@make -C $(LINUX_MINILIBX_PATH) > /dev/null 
+	@make -C $(LINUX_MINILIBX_PATH) > /dev/null 2>&1
 
 clean:
 	@printf "$(CYAN)Cleaning objects and libraries$(NC)\n";
@@ -117,17 +117,17 @@ clean:
 	@make clean -C $(DPRINTF_PATH) > /dev/null
 	@make clean -C $(GNLINE_PATH) > /dev/null
 #	@make clean -C $(LINUX_MINILIBX_PATH)> /dev/null 2>&1
-	@make clean -C $(MAC_MINILIBX_PATH)> /dev/null 2>&1
+	@make clean -C $(MAC_MINILIBX_PATH) > /dev/null 2>&1
 
 fclean : clean
 	@printf "$(CYAN)Cleaning objects, libraries and executable$(NC)\n";
 	@rm -rf $(NAME)
 	@make fclean -C $(LIBFT_PATH) > /dev/null
 	@make fclean -C $(PRINTF_PATH) > /dev/null
-	@make fclean -C $(DRINTF_PATH) > /dev/null
+	@make fclean -C $(DPRINTF_PATH) > /dev/null
 	@make fclean -C $(GNLINE_PATH) > /dev/null
 #	@make clean -C $(LINUX_MINILIBX_PATH)> /dev/null 2>&1
-	@make clean -C $(MAC_MINILIBX_PATH)> /dev/null 2>&1
+	@make clean -C $(MAC_MINILIBX_PATH) > /dev/null 2>&1
 
 re: fclean all 
 
