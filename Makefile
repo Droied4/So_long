@@ -6,7 +6,7 @@
 #    By: carmeno <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 22:34:39 by carmeno           #+#    #+#              #
-#    Updated: 2024/01/23 22:19:17 by deordone         ###   ########.fr        #
+#    Updated: 2024/01/23 22:52:25 by deordone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,19 @@ NC=\033[0m # No color
 #                               RULES                                          #
 # ╚══════════════════════════════════════════════════════════════════════════╝ #  
 
-all: header $(NAME)
+all: header make_libs $(NAME)
+
+make_libs:
+	@make -C $(LIBFT_PATH) > /dev/null
+#	@printf "$(CYAN)Compiling $(LIBFT_PATH)$(NC)\n";
+	@make -C $(PRINTF_PATH) > /dev/null
+#	@printf "$(CYAN)Compiling $(PRINTF_PATH)$(NC)\n";
+	@make -C $(DPRINTF_PATH) > /dev/null
+#	@printf "$(CYAN)Compiling $(DPRINTF_PATH)$(NC)\n";
+	@make -C $(GNLINE_PATH) > /dev/null
+#	@printf "$(CYAN)Compiling $(GNLINE_PATH)$(NC)\n";
+	@make -C $(MAC_MINILIBX_PATH) > /dev/null 2>&1
+#	@printf "$(CYAN)Compiling $(MAC_MINILIBX_PATH)$(NC)\n";
 
 -include $(DEPS)
 $(NAME): $(OBJECTS) $(LIBFT) $(PRINTF) $(DPRINTF) $(GNLINE) $(MINILIBX_MAC)  #$(MINILIBX_LINUX) 
