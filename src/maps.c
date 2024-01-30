@@ -6,17 +6,38 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:45:40 by deordone          #+#    #+#             */
-/*   Updated: 2024/01/22 17:51:51 by deordone         ###   ########.fr       */
+/*   Updated: 2024/01/30 02:53:29 by carmeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 
-/*void	ft_is_validmap(t_map *map)
+void	floodfill(t_map *checkmap, int x, int y)
 {
-check the flood fill
-}*/
+	if (x < 0 || x > checkmap->width_map)
+		return ;
+	if (y < 0 || y > checkmap->height_map)
+		return ;
+	if (checkmap->map[x][y] != SPACE && checkmap->map[x][y] != PLAYER 
+			&& checkmap->map[x][y] != ITEM)
+		return ;
+	checkmap->map[x][y] = 'F';
+	floodfill(checkmap, x - 1, y);
+	floodfill(checkmap, x + 1, y);
+	floodfill(checkmap, x, y - 1);
+	floodfill(checkmap, x, y + 1);
+	/*
+	if (cur.y < 0 || cur.y >= size.y || cur.x < 0 || cur.x >= size.x \
+		|| (v->map[cur.y][cur.x] != '0' && v->map[cur.y][cur.x] != 'P' \
+		&& v->map[cur.y][cur.x] != 'C'))
+		return ;
+	v->map[cur.y][cur.x] = 'F';
+	floodfill(v, size, (t_point){cur.x - 1, cur.y});
+	floodfill(v, size, (t_point){cur.x + 1, cur.y});
+	floodfill(v, size, (t_point){cur.x, cur.y - 1});
+	floodfill(v, size, (t_point){cur.x, cur.y + 1});*/
+}
 
 void	ft_map_components(t_map *map)
 {
@@ -42,9 +63,16 @@ void	ft_map_components(t_map *map)
 
 void	ft_is_closemap(t_map *map)
 {
+	//new
+	t_map checkmap;
+
 	if (ft_check_horizontal_map(map) == 1 || ft_check_vertical_map(map) == 1)
 		ft_map_error(map, "so_long : unclosed map\n");
 	ft_map_components(map);
+	//new
+	checkmap = *map;
+	//im pretty sure that the direction is the same so maybe i have to do a strdup
+	floodfill(&checkma, 0, 0);
 }
 
 void ft_create_map(t_map *map, int fd)
