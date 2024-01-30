@@ -6,7 +6,7 @@
 #    By: carmeno <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 22:34:39 by carmeno           #+#    #+#              #
-#    Updated: 2024/01/23 22:52:25 by deordone         ###   ########.fr        #
+#    Updated: 2024/01/30 13:27:40 by deordone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ NC=\033[0m # No color
 #                               RULES                                          #
 # ╚══════════════════════════════════════════════════════════════════════════╝ #  
 
-all: header make_libs $(NAME)
+all: header  $(NAME)
 
 make_libs:
 	@make -C $(LIBFT_PATH) > /dev/null
