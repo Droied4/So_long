@@ -6,44 +6,24 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:45:40 by deordone          #+#    #+#             */
-/*   Updated: 2024/01/30 02:53:29 by carmeno          ###   ########.fr       */
+/*   Updated: 2024/01/30 19:13:52 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-
-void	floodfill(t_map *checkmap, int x, int y)
+void	ft_is_valid(t_map *checkmap, t_vector2d cor)
 {
-	if (x < 0 || x > checkmap->width_map)
-		return ;
-	if (y < 0 || y > checkmap->height_map)
-		return ;
-	if (checkmap->map[x][y] != SPACE && checkmap->map[x][y] != PLAYER 
-			&& checkmap->map[x][y] != ITEM)
-		return ;
-	checkmap->map[x][y] = 'F';
-	floodfill(checkmap, x - 1, y);
-	floodfill(checkmap, x + 1, y);
-	floodfill(checkmap, x, y - 1);
-	floodfill(checkmap, x, y + 1);
-	/*
-	if (cur.y < 0 || cur.y >= size.y || cur.x < 0 || cur.x >= size.x \
-		|| (v->map[cur.y][cur.x] != '0' && v->map[cur.y][cur.x] != 'P' \
-		&& v->map[cur.y][cur.x] != 'C'))
-		return ;
-	v->map[cur.y][cur.x] = 'F';
-	floodfill(v, size, (t_point){cur.x - 1, cur.y});
-	floodfill(v, size, (t_point){cur.x + 1, cur.y});
-	floodfill(v, size, (t_point){cur.x, cur.y - 1});
-	floodfill(v, size, (t_point){cur.x, cur.y + 1});*/
+	// pasa el map como parametro en ft_is_valid en vez del checkmap y aqui te haces tu duplicado del map y pues lo guardas en checkmap
+	floodfill(checkmap, cor);
+	ft_slpath_exist(checkmap, (t_vector2d){0, 0});
 }
 
 void	ft_map_components(t_map *map)
 {
-	int i;
-	int j;
-	int *keeper;
+	int	i;
+	int	j;
+	int	*keeper;
 
 	i = -1;
 	keeper = ft_calloc(sizeof(int), 5);
@@ -52,8 +32,8 @@ void	ft_map_components(t_map *map)
 	while (map->map[++i])
 	{
 		j = -1;
-		while(map->map[i][++j])
-			keeper = ft_check_components( map->map[i][j], keeper);
+		while (map->map[i][++j])
+			keeper = ft_check_components(map->map[i][j], keeper);
 	}
 	if (keeper[0] > 1)
 		ft_map_error(map, "so long : more than one player\n");
@@ -63,23 +43,33 @@ void	ft_map_components(t_map *map)
 
 void	ft_is_closemap(t_map *map)
 {
-	//new
-	t_map checkmap;
+	t_map	checkmap;
+	int		y;
+	int		x;
 
+	y = 0;
+	x = 0;
 	if (ft_check_horizontal_map(map) == 1 || ft_check_vertical_map(map) == 1)
 		ft_map_error(map, "so_long : unclosed map\n");
 	ft_map_components(map);
-	//new
 	checkmap = *map;
-	//im pretty sure that the direction is the same so maybe i have to do a strdup
-	floodfill(&checkma, 0, 0);
+	while (checkmap.map[y][x] != PLAYER)
+	{
+		x++;
+		if (!checkmap.map[y][x])
+		{
+			y++;
+			x = 0;
+		}
+	}
+	ft_is_valid(&checkmap, (t_vector2d){y, x});
 }
 
-void ft_create_map(t_map *map, int fd)
+void	ft_create_map(t_map *map, int fd)
 {
-	char *line;
-	char *final_line;
-	
+	char	*line;
+	char	*final_line;
+
 	final_line = ft_calloc(sizeof(char), 1);
 	if (!final_line)
 		ft_map_error(map, "so_long : memory reserve failed\n");
@@ -105,9 +95,9 @@ void ft_create_map(t_map *map, int fd)
 
 void	ft_map_existence(char **argv)
 {
-	t_map map;
-	int l_mapath;
-		
+	t_map	map;
+	int		l_mapath;
+
 	l_mapath = ft_strlen(argv[1]);
 	l_mapath -= 4;
 	if (ft_strncmp(&argv[1][l_mapath], ".ber", 4) != 0)

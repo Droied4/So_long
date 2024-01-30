@@ -6,13 +6,13 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 13:14:26 by deordone          #+#    #+#             */
-/*   Updated: 2024/01/22 17:50:06 by deordone         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:14:03 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int *ft_check_components(char pos, int *keeper)
+int	*ft_check_components(char pos, int *keeper)
 {
 	if (pos == PLAYER)
 		keeper[0]++;

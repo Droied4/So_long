@@ -6,7 +6,7 @@
 /*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 22:46:45 by carmeno           #+#    #+#             */
-/*   Updated: 2024/01/30 02:53:56 by carmeno          ###   ########.fr       */
+/*   Updated: 2024/01/30 19:06:32 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void		ft_map_existence(char **argv);
 void		ft_create_map(t_map *map, int fd);
 void		ft_is_closemap(t_map *map);
 void		ft_map_components(t_map *map);
-void		ft_is_valid(t_map *map);
+void		ft_is_valid(t_map *map, t_vector2d cor);
 
 /*
 ╔════════════════════╗
@@ -92,14 +92,23 @@ int			ft_check_horizontal_map(t_map *map);
 int			ft_check_vertical_map(t_map *map);
 void		ft_check_rectangularmap(t_map *map);
 void		ft_init_map(t_map *map);
-int	*ft_check_components(char pos, int *keeper);
+int			*ft_check_components(char pos, int *keeper);
 
-	/*
-	╔════════════════════╗
-			ERROR
-	╚════════════════════╝
-	*/
-	void ft_map_error(t_map *map, char *message);
+/*
+╔════════════════════╗
+		MAPS UTILS2
+╚════════════════════╝
+*/
+
+void		floodfill(t_map *checkmap, t_vector2d cor);
+void		ft_slpath_exist(t_map *checkmap, t_vector2d cor);
+
+/*
+╔════════════════════╗
+		ERROR
+╚════════════════════╝
+*/
+void		ft_map_error(t_map *map, char *message);
 void		ft_sl_error(char *message);
 void		ft_free_array(char **matriz);
 
