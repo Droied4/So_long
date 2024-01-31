@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:48:50 by deordone          #+#    #+#             */
-/*   Updated: 2024/01/31 11:36:57 by deordone         ###   ########.fr       */
+/*   Updated: 2024/01/31 13:27:37 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,13 @@ void	floodfill(t_map *checkmap, t_vector2d cor)
 		&& checkmap->map[cor.y][cor.x] != EXIT)
 		return ;
 	checkmap->map[cor.y][cor.x] = 'F';
-		ft_dprintf(2, "\n");
-		ft_dprintf(2, "%s\n", checkmap->map[0]);
-		ft_dprintf(2, "%s\n", checkmap->map[1]);
-		ft_dprintf(2, "%s\n", checkmap->map[2]);
-		ft_dprintf(2, "%s\n", checkmap->map[3]);
-		ft_dprintf(2, "%s\n", checkmap->map[4]);
-		ft_dprintf(2, "%s\n", checkmap->map[5]);
 	floodfill(checkmap, (t_vector2d){cor.x - 1, cor.y});
 	floodfill(checkmap, (t_vector2d){cor.x + 1, cor.y});
 	floodfill(checkmap, (t_vector2d){cor.x, cor.y - 1});
 	floodfill(checkmap, (t_vector2d){cor.x, cor.y + 1});
 }
 
-void	ft_slpath_exist(t_map *checkmap, t_vector2d cor)
+int	ft_slpath_exist(t_map *checkmap, t_vector2d cor)
 {
 	int	aux;
 
@@ -51,10 +44,56 @@ void	ft_slpath_exist(t_map *checkmap, t_vector2d cor)
 			if (checkmap->map[cor.y][cor.x] == PLAYER
 				|| checkmap->map[cor.y][cor.x] == EXIT
 				|| checkmap->map[cor.y][cor.x] == ITEM)
-				aux++;
+				return (1);
 		}
 		cor.y++;
 	}
-	if (aux >= 1)
-		ft_map_error(checkmap, "so_long: there is no possible path\n");
+	return (0);
+}
+
+char	**ft_matrizdup(const char **matriz)
+{
+	char **dup;
+	int row;
+
+	row = 0;
+	while (matriz[row])
+		row++;
+	dup = malloc(sizeof(char *) * row + 1);
+	if (!dup)
+		return (NULL);
+	row = -1;
+	while (matriz[++row])
+	{
+		dup[row] = ft_strdup(matriz[row]);
+		if (!dup[row])
+		{
+			ft_free_array(dup);
+			return (NULL);
+		}
+	}
+	dup[row] = NULL;
+	return (dup);
+}
+
+int *ft_find_component(t_map *map, char c)
+{
+	int	y;
+	int	x;
+	static int rslt[2];
+
+	y = 0;
+	x = 0;
+	while (map->map[y][x] != c)
+	{
+		++x;
+		if (!map->map[y][x])
+		{
+			++y;
+			x = 0;
+		}
+	}
+	rslt[0] = x;
+	rslt[1] = y;
+	return (rslt);
 }

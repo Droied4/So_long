@@ -6,11 +6,18 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:46:04 by deordone          #+#    #+#             */
-/*   Updated: 2024/01/30 19:14:50 by deordone         ###   ########.fr       */
+/*   Updated: 2024/01/31 13:01:54 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	ft_player_movement(t_map *map)
+{
+	ft_printf("x -> %i\n", map->player.x);	
+	ft_printf("y -> %i\n", map->player.y);	
+	return ;
+}
 
 int	main(int argc, char **argv)
 {
@@ -20,10 +27,12 @@ int	main(int argc, char **argv)
 	//int		height;
 	//t_img		img;
 	//char	*path;
+	t_map map;
 
 	if (argc != 2)
 		ft_sl_error("so_long : two arguments are needed\n");
-	ft_map_existence(argv);
+	ft_map_existence(argv, &map);
+	ft_player_movement(&map);
 	ft_printf("OK\n");
 	return (0);
 	/*
