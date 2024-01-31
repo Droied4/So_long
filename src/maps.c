@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:45:40 by deordone          #+#    #+#             */
-/*   Updated: 2024/01/30 19:13:52 by deordone         ###   ########.fr       */
+/*   Updated: 2024/01/31 11:38:55 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_is_closemap(t_map *map)
 			x = 0;
 		}
 	}
-	ft_is_valid(&checkmap, (t_vector2d){y, x});
+	ft_is_valid(&checkmap, (t_vector2d){x, y});
 }
 
 void	ft_create_map(t_map *map, int fd)

@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:48:50 by deordone          #+#    #+#             */
-/*   Updated: 2024/01/30 19:14:09 by deordone         ###   ########.fr       */
+/*   Updated: 2024/01/31 11:36:57 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ void	floodfill(t_map *checkmap, t_vector2d cor)
 		&& checkmap->map[cor.y][cor.x] != EXIT)
 		return ;
 	checkmap->map[cor.y][cor.x] = 'F';
-	/*	ft_dprintf(2, "\n");
+		ft_dprintf(2, "\n");
 		ft_dprintf(2, "%s\n", checkmap->map[0]);
 		ft_dprintf(2, "%s\n", checkmap->map[1]);
 		ft_dprintf(2, "%s\n", checkmap->map[2]);
 		ft_dprintf(2, "%s\n", checkmap->map[3]);
 		ft_dprintf(2, "%s\n", checkmap->map[4]);
-		ft_dprintf(2, "%s\n", checkmap->map[5]);*/
+		ft_dprintf(2, "%s\n", checkmap->map[5]);
 	floodfill(checkmap, (t_vector2d){cor.x - 1, cor.y});
 	floodfill(checkmap, (t_vector2d){cor.x + 1, cor.y});
 	floodfill(checkmap, (t_vector2d){cor.x, cor.y - 1});
