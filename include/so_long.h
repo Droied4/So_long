@@ -6,25 +6,35 @@
 /*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 22:46:45 by carmeno           #+#    #+#             */
-/*   Updated: 2024/01/31 13:27:39 by deordone         ###   ########.fr       */
+/*   Updated: 2024/01/31 15:44:54 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# define SPACE '0'
-# define WALL '1'
-# define ITEM 'C'
-# define EXIT 'E'
-# define PLAYER 'P'
 # include "../library/ft_dprintf/ft_dprintf.h"
-# include "../library/libft/libft.h"
-# include "../library/printf/ft_printf.h"
-//# include "../library/minilibx_linux/mlx.h"
 # include "../library/get_next_line/get_next_line.h"
+# include "../library/libft/libft.h"
 # include "../library/minilibx_mac/mlx.h"
-//# include "sprites.h"
-/*Datos para las imagenes*/
+# include "../library/printf/ft_printf.h"
+
+# define SPACE '0'
+# define SPACE_PATH "./sprites/space.xpm"
+# define WALL '1'
+# define WALL_PATH "./sprites/wall.xpm"
+# define ITEM 'C'
+# define ITEM_PATH "./sprites/item.xpm"
+# define EXIT 'E'
+# define EXIT_PATH "./sprites/exit.xpm"
+# define PLAYER 'P'
+# define PLAYER_PATH "./sprites/player.xpm"
+
+typedef struct s_mlx
+{
+	void		*mlx;
+	void		*win;
+}				t_mlx;
+
 typedef struct s_img
 {
 	void		*image;
@@ -32,14 +42,9 @@ typedef struct s_img
 	int			bpp;
 	int			l_line;
 	int			endian;
+	int			width;
+	int			height;
 }				t_img;
-/*
-typedef struct s_comp
-{
-	char		enemy;
-	char		proyectile;
-}				t_comp;
-*/
 
 typedef struct s_vector2d
 {
@@ -56,21 +61,6 @@ typedef struct s_map
 	int			fd_map;
 	t_vector2d	player;
 }				t_map;
-
-typedef struct s_colors
-{
-	int			red;
-	int			green;
-	int			blue;
-	int			black;
-	int			white;
-	int			yellow;
-	int			magenta;
-	int			cyan;
-	int			brown;
-	int			orange;
-	int			purple;
-}				t_colors;
 
 /*
 ╔════════════════════╗
