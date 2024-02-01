@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:46:04 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/01 18:48:27 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/01 19:09:01 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,13 @@ void	ft_player_movement(t_map *map)
 	return ;
 }
 
-enum {
-	ON_KEYDOWN = 2,
-	ON_KEYUP = 3,
-	ON_MOUSEDOWN = 4,
-	ON_MOUSEUP = 5,
-	ON_MOUSEMOVE = 6,
-	ON_EXPOSE = 12,
-	ON_DESTROY = 17
-};
-
-/*int	endgame(int keycode, t_mlx *mlx)
+int	endgame(int keycode, t_mlx *mlx)
 {
-	mlx_destroy_window(mlx->mlx, mlx->win);
+	if (keycode == ESC)
+		printf("csitas%p\n", mlx->mlx);
+//		mlx_destroy_window(mlx->mlx, mlx->win);
 	return (0);
-}*/
+}
 
 int	main(int argc, char **argv)
 {
@@ -73,7 +65,7 @@ int	main(int argc, char **argv)
 		mlx_put_image_to_window(mlx.mlx, mlx.win, img.image, 132, 116);
 		mlx_put_image_to_window(mlx.mlx, mlx.win, img.image, 148, 124);
 	}
-	//mlx_hook(mlx.win, 17, 0, endgame, &mlx);
+	mlx_hook(mlx.win, ESC, 0, endgame, &mlx);
 	//mlx_key_hook(mlx.win, key_hook, &mlx);
 	mlx_loop(mlx.mlx);
 	return (0);

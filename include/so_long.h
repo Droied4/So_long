@@ -6,7 +6,7 @@
 /*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 22:46:45 by carmeno           #+#    #+#             */
-/*   Updated: 2024/01/31 15:44:54 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/01 19:06:48 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define EXIT_PATH "./sprites/exit.xpm"
 # define PLAYER 'P'
 # define PLAYER_PATH "./sprites/player.xpm"
+# define ESC 53
 
 typedef struct s_mlx
 {
