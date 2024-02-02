@@ -6,7 +6,7 @@
 /*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 22:46:45 by carmeno           #+#    #+#             */
-/*   Updated: 2024/02/01 19:06:48 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/02 17:26:15 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,14 @@
 # define PLAYER 'P'
 # define PLAYER_PATH "./sprites/player.xpm"
 # define ESC 53
-
-typedef struct s_mlx
-{
-	void		*mlx;
-	void		*win;
-}				t_mlx;
-
-typedef struct s_img
-{
-	void		*image;
-	char		*addr;
-	int			bpp;
-	int			l_line;
-	int			endian;
-	int			width;
-	int			height;
-}				t_img;
+# define LEFT_ARROW 123
+# define RIGHT_ARROW 124
+# define DOWN_ARROW 125
+# define UP_ARROW 126
+# define A_BUTTON 0
+# define D_BUTTON 2
+# define S_BUTTON 1
+# define W_BUTTON 13
 
 typedef struct s_vector2d
 {
@@ -63,6 +54,29 @@ typedef struct s_map
 	t_vector2d	player;
 }				t_map;
 
+typedef struct s_mlx
+{
+	void		*mlx;
+	void		*win;
+	t_map		map;
+}				t_mlx;
+
+typedef struct s_img
+{
+	void		*image;
+	char		*addr;
+	int			bpp;
+	int			l_line;
+	int			endian;
+	int			width;
+	int			height;
+}				t_img;
+
+/*
+╔════════════════════╗
+		MAIN
+╚════════════════════╝
+*/
 /*
 ╔════════════════════╗
 			MAPS
@@ -100,12 +114,19 @@ int				*ft_find_component(t_map *map, char c);
 
 /*
 ╔════════════════════╗
+		MOVEMENTS
+╚════════════════════╝
+*/
+int	ft_event_listener(int keycode, t_mlx *mlx);
+/*
+╔════════════════════╗
 		ERROR
 ╚════════════════════╝
 */
 void			ft_map_error(t_map *map, char *message);
 void			ft_sl_error(char *message);
 void			ft_free_array(char **matriz);
+
 
 /*
  *	SHAPES

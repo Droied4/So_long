@@ -6,7 +6,7 @@
 #    By: carmeno <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 22:34:39 by carmeno           #+#    #+#              #
-#    Updated: 2024/01/31 15:48:04 by deordone         ###   ########.fr        #
+#    Updated: 2024/02/02 17:04:41 by deordone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ MINILIBX_MAC = $(MAC_MINILIBX_PATH)/libmlx.a
 MINILIBX_LINUX = $(LINUX_MINILIBX_PATH)/libmlx_Linux.a
 
 HEADER = $(INCLUDE_PATH)/so_long.h
-SOURCES = so_long.c maps.c maps_utils.c maps_utils2.c map_error.c
+SOURCES = so_long.c maps.c maps_utils.c maps_utils2.c map_error.c movement.c
 
 # ╔══════════════════════════════════════════════════════════════════════════╗ #  
 #                               OBJECTS                                        #
