@@ -6,68 +6,106 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 16:21:44 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/02 17:52:48 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/04 16:50:16 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	ft_player_left(t_map *map)
+static void	ft_item(t_map *map)
 {
-	int i;
-
-	i = -1;
-	while (++i < map->height_map)
-		ft_printf("%s\n", map->map[i]);
-	ft_printf("\n");
-	// Coordenadas de P
-	// Dependiendo de la tecla hago el movimiento si es un 0 se puede si es un WALL o EXIT no se puede
+	map->map[map->player.y][map->player.x] = SPACE;
+	--map->max_items;
 }
 
-static void	ft_player_right(t_map *map)
+int	ft_player_left(t_map *map)
 {
-	int i;
+	char	temp;
 
-	i = -1;
-	while (++i < map->height_map)
-		ft_printf("%s\n", map->map[i]);
-	ft_printf("\n");
-}
-
-static void	ft_player_up(t_map *map)
-{
-	int i;
-
-	i = -1;
-	while (++i < map->height_map)
-		ft_printf("%s\n", map->map[i]);
-	ft_printf("\n");
-}
-
-static void	ft_player_down(t_map *map)
-{
-	int i;
-
-	i = -1;
-	while (++i < map->height_map)
-		ft_printf("%s\n", map->map[i]);
-	ft_printf("\n");
-}
-
-int	ft_event_listener(int keycode, t_mlx *mlx)
-{
-	if (keycode == ESC)
+	if (map->map[map->player.y][map->player.x - 1] != WALL
+		&& (map->map[map->player.y][map->player.x - 1] != EXIT
+			|| map->max_items <= 0))
 	{
-		mlx_destroy_window(mlx->mlx, mlx->win);
-		exit(0);
+		temp = map->map[map->player.y][map->player.x];
+		if (map->map[map->player.y][map->player.x - 1] == EXIT
+			&& map->max_items <= 0)
+			return (1);
+		if (map->map[map->player.y][map->player.x - 1] == ITEM)
+			ft_item(map);
+		else
+			map->map[map->player.y][map->player.x] = \
+				map->map[map->player.y][map->player.x - 1];
+		map->map[map->player.y][map->player.x - 1] = temp;
+		map->player.x -= 1;
 	}
-	if (keycode == LEFT_ARROW || keycode == A_BUTTON)
-		ft_player_left(&mlx->map);
-	if (keycode == RIGHT_ARROW || keycode == D_BUTTON)
-		ft_player_right(&mlx->map);
-	if (keycode == DOWN_ARROW || keycode == S_BUTTON)
-		ft_player_down(&mlx->map);
-	if (keycode == UP_ARROW || keycode == W_BUTTON)
-		ft_player_up(&mlx->map);
+	return (0);
+}
+
+int	ft_player_right(t_map *map)
+{
+	char	temp;
+
+	if (map->map[map->player.y][map->player.x + 1] != WALL
+		&& (map->map[map->player.y][map->player.x + 1] != EXIT
+			|| map->max_items <= 0))
+	{
+		temp = map->map[map->player.y][map->player.x];
+		if (map->map[map->player.y][map->player.x + 1] == EXIT
+			&& map->max_items <= 0)
+			return (1);
+		if (map->map[map->player.y][map->player.x + 1] == ITEM)
+			ft_item(map);
+		else
+			map->map[map->player.y][map->player.x] = \
+				map->map[map->player.y][map->player.x + 1];
+		map->map[map->player.y][map->player.x + 1] = temp;
+		map->player.x += 1;
+	}
+	return (0);
+}
+
+int	ft_player_up(t_map *map)
+{
+	char	temp;
+
+	if (map->map[map->player.y - 1][map->player.x] != WALL
+		&& (map->map[map->player.y - 1][map->player.x] != EXIT
+			|| map->max_items <= 0))
+	{
+		temp = map->map[map->player.y][map->player.x];
+		if (map->map[map->player.y - 1][map->player.x] == EXIT
+			&& map->max_items <= 0)
+			return (1);
+		if (map->map[map->player.y - 1][map->player.x] == ITEM)
+			ft_item(map);
+		else
+			map->map[map->player.y][map->player.x] = map->map[map->player.y
+				- 1][map->player.x];
+		map->map[map->player.y - 1][map->player.x] = temp;
+		map->player.y -= 1;
+	}
+	return (0);
+}
+
+int	ft_player_down(t_map *map)
+{
+	char	temp;
+
+	if (map->map[map->player.y + 1][map->player.x] != WALL
+		&& (map->map[map->player.y + 1][map->player.x] != EXIT
+			|| map->max_items <= 0))
+	{
+		temp = map->map[map->player.y][map->player.x];
+		if (map->map[map->player.y + 1][map->player.x] == EXIT
+			&& map->max_items <= 0)
+			return (1);
+		if (map->map[map->player.y + 1][map->player.x] == ITEM)
+			ft_item(map);
+		else
+			map->map[map->player.y][map->player.x] = map->map[map->player.y
+				+ 1][map->player.x];
+		map->map[map->player.y + 1][map->player.x] = temp;
+		map->player.y += 1;
+	}
 	return (0);
 }

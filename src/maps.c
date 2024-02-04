@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:45:40 by deordone          #+#    #+#             */
-/*   Updated: 2024/01/31 13:27:52 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/04 16:19:01 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	ft_map_components(t_map *map)
 	if (keeper[0] < 1 || keeper[1] < 1 || keeper[2] < 1 || keeper[3] < 1
 		|| keeper[4] < 1)
 		ft_map_error(map, "so long : a component is missing\n");
+	map->max_items = keeper[1];
 }
 
 void	ft_is_closemap(t_map *map)
@@ -111,7 +112,6 @@ void	ft_map_existence(char **argv, t_map *map)
 	l_mapath -= 4;
 	if (ft_strncmp(&argv[1][l_mapath], ".ber", 4) != 0)
 		ft_sl_error("so_long : invalid map\n");
-	ft_init_map(map);
 	map->fd_map = open(argv[1], O_RDONLY);
 	if (!map->fd_map)
 		ft_sl_error("so_long : bad file descriptor\n");

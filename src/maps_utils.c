@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 13:14:26 by deordone          #+#    #+#             */
-/*   Updated: 2024/01/31 12:53:30 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/04 16:27:14 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,13 @@ void	ft_check_rectangularmap(t_map *map)
 		ft_sl_error("so_long : non-rectangular map\n");
 }
 
-void	ft_init_map(t_map *map)
+/*void	ft_init_map(t_map *map)
 {
-	map->map = NULL;
-	map->height_map = 0;
-	map->width_map = 0;
-	map->bytes_map = 0;
-	map->fd_map = -1;
-	map->player.x = -1;
-	map->player.y = -1;
-}
+//	map->map = NULL;
+//	map->height_map = 0;
+//	map->width_map = 0;
+//	map->bytes_map = 0;
+//	map->fd_map = -1;
+//	map->player.x = -1;
+//	map->player.y = -1;
+}*/
