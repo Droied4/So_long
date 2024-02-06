@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:46:16 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/04 16:47:02 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/06 16:15:44 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,3 +19,5 @@ void    my_pixel_put(t_img *data, int x, int y, int color)
         dst = data->addr + (y * data->l_line + x * (data->bpp / 8));
         *(unsigned int *)dst = color;
 }
+
+

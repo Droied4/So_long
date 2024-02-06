@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:45:40 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/04 16:19:01 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/06 15:49:35 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,6 @@ void	ft_is_closemap(t_map *map)
 	if (ft_check_horizontal_map(map) == 1 || ft_check_vertical_map(map) == 1)
 		ft_map_error(map, "so_long : unclosed map\n");
 	ft_map_components(map);
-//	while (map->map[y][x] != PLAYER)
-//	{
-//		x++;
-//		if (!map->map[y][x])
-//		{
-//			y++;
-//			x = 0;
-//		}
-//	}
 	cor = ft_find_component(map, PLAYER);
 	map->player.x = cor[0];
 	map->player.y = cor[1];
