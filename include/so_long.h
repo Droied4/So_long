@@ -6,7 +6,7 @@
 /*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 22:46:45 by carmeno           #+#    #+#             */
-/*   Updated: 2024/02/06 17:27:28 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/07 11:19:03 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include "../library/minilibx_mac/mlx.h"
 # include "../library/printf/ft_printf.h"
 
-# define SCREEN_WIDTH 500
-# define SCREEN_HEIGHT 500
+# define SCREEN_WIDTH 1280
+# define SCREEN_HEIGHT 720
 # define SPRITE_SIZE 16
 # define SPACE '0'
 # define SPACE_PATH "./sprites/space.xpm"
@@ -155,7 +155,8 @@ void			ft_free_array(char **matriz);
 ╚════════════════════╝
 */
 
-void	ft_construct_image(t_mlx *mlx);
+void	ft_render_daddy(t_mlx *mlx);
+void	ft_construct_image(t_mlx *mlx, t_sprites *spr);
 
 /*
  *	SHAPES
