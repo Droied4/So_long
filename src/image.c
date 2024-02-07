@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 13:47:52 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/07 13:42:26 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:07:54 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,23 @@
 static void	ft_put_image(t_mlx *mlx, t_sprites *spr, t_vector2d coor_win, t_vector2d coor_map)
 {
 	if (mlx->map.map[coor_map.y][coor_map.x] == WALL)
-		mlx_put_image_to_window(mlx->mlx, mlx->win, spr->wall.image, coor_win.x, coor_win.y);
+		mlx_put_image_to_window(mlx->mlx, mlx->win, spr->wall.image, coor_win.x, coor_win.y - (SPRITE_SIZE / 4));
 	else if (mlx->map.map[coor_map.y][coor_map.x] == SPACE)
 		mlx_put_image_to_window(mlx->mlx, mlx->win, spr->space.image, coor_win.x, coor_win.y);
 	else if (mlx->map.map[coor_map.y][coor_map.x] == PLAYER)
-		mlx_put_image_to_window(mlx->mlx, mlx->win, spr->player.image, coor_win.x, coor_win.y);
+	{
+		mlx_put_image_to_window(mlx->mlx, mlx->win, spr->space.image, coor_win.x, coor_win.y);
+		mlx_put_image_to_window(mlx->mlx, mlx->win, spr->player_down.image, coor_win.x, coor_win.y - (SPRITE_SIZE));
+	}
 	else if (mlx->map.map[coor_map.y][coor_map.x] == ITEM)
-		mlx_put_image_to_window(mlx->mlx, mlx->win, spr->item.image, coor_win.x, coor_win.y);
+	{
+		mlx_put_image_to_window(mlx->mlx, mlx->win, spr->space.image, coor_win.x, coor_win.y);
+		mlx_put_image_to_window(mlx->mlx, mlx->win, spr->item.image, coor_win.x, coor_win.y - SPRITE_SIZE);
+	}
 	else if (mlx->map.map[coor_map.y][coor_map.x] == EXIT)
-		mlx_put_image_to_window(mlx->mlx, mlx->win, spr->exit.image, coor_win.x, coor_win.y);
-	//else
-	//	return ;
-	//ft_dprintf(2,"y -> %i\nx -> %i\n", coor_map.y, coor_map.x);
-	//ft_dprintf(2,"map -> %c\n", mlx->map.map[coor_map.y][coor_map.x]);
+		mlx_put_image_to_window(mlx->mlx, mlx->win, spr->exit.image, coor_win.x, coor_win.y - (SPRITE_SIZE / 2));
+	else
+		return ;
 }
 
 static void	ft_render_image(t_mlx *mlx, t_img *image, char *sprite_path)
@@ -46,7 +50,10 @@ void	ft_render_daddy(t_mlx *mlx)
 
 	ft_render_image(mlx, &spr.wall, WALL_PATH);
 	ft_render_image(mlx, &spr.space, SPACE_PATH);
-	ft_render_image(mlx, &spr.player, PLAYER_PATH);
+	ft_render_image(mlx, &spr.player_up, PLAYER_UP_PATH);
+	ft_render_image(mlx, &spr.player_down, PLAYER_DOWN_PATH);
+	ft_render_image(mlx, &spr.player_right, PLAYER_RIGHT_PATH);
+	ft_render_image(mlx, &spr.player_left, PLAYER_LEFT_PATH);
 	ft_render_image(mlx, &spr.item, ITEM_PATH);
 	ft_render_image(mlx, &spr.exit, EXIT_PATH);
 /*	mlx_put_image_to_window(mlx->mlx, mlx->win, spr.space.image, SCREEN_WIDTH / 2, 0);
@@ -73,8 +80,6 @@ void	ft_construct_image(t_mlx *mlx, t_sprites *spr)
 	int temp_x;
 	int temp_y;
 	
-	my_x = SPRITE_SIZE; //16
-	my_y = SPRITE_SIZE/2; //8
 	pos_x = SCREEN_WIDTH/2; //la mitad de la pantalla en x
 	pos_y = 0; //el inicio de la pantalla en y
 	temp_x = 0;
@@ -86,12 +91,11 @@ void	ft_construct_image(t_mlx *mlx, t_sprites *spr)
 		pos_y = temp_y;
 		temp_x += SPRITE_SIZE;
 		temp_y += SPRITE_SIZE / 2;
+		my_x = SPRITE_SIZE; //16
+		my_y = SPRITE_SIZE/2; //8
 		j = -1;
-		ft_dprintf(2,"Horse\n");
 		while (mlx->map.map[i][++j] != '\0')
 		{
-		ft_dprintf(2,"pos_x -> %i\n", pos_x - my_x);
-		ft_dprintf(2,"pos_y -> %i\n", pos_y + my_y);
 			ft_put_image(mlx, spr, (t_vector2d){pos_x - my_x, pos_y + my_y}, (t_vector2d){j,i});
 			my_x += SPRITE_SIZE;
 			my_y += SPRITE_SIZE/2;

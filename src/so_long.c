@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:46:04 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/07 11:22:49 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:13:00 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,8 @@ int	main(int argc, char **argv)
 	if (!mlx.win)
 		exit(1);
 	else
-	{
 		ft_render_daddy(&mlx);
-//		mlx_put_image_to_window(mlx.mlx, mlx.win, img.image, 100, 100);
-//		mlx_put_image_to_window(mlx.mlx, mlx.win, img.image, 116, 108);
-//		mlx_put_image_to_window(mlx.mlx, mlx.win, img.image, 132, 116);
-//		mlx_put_image_to_window(mlx.mlx, mlx.win, img.image, 148, 124);
-	}
+	mlx_hook(mlx.win, 2, 0, ft_event_listener, &mlx);
 	mlx_hook(mlx.win, 2, 0, ft_event_listener, &mlx);
 	mlx_loop(mlx.mlx);
 	return (0);

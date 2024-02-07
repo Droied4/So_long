@@ -6,7 +6,7 @@
 /*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 22:46:45 by carmeno           #+#    #+#             */
-/*   Updated: 2024/02/07 11:19:03 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:12:04 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@
 # define EXIT 'E'
 # define EXIT_PATH "./sprites/exit.xpm"
 # define PLAYER 'P'
-# define PLAYER_PATH "./sprites/player.xpm"
+# define PLAYER_UP_PATH "./sprites/player.xpm"
+# define PLAYER_DOWN_PATH "./sprites/player.xpm"
+# define PLAYER_RIGHT_PATH "./sprites/player.xpm"
+# define PLAYER_LEFT_PATH "./sprites/player.xpm"
 # define ESC 53
 # define LEFT_ARROW 123
 # define RIGHT_ARROW 124
@@ -62,6 +65,7 @@ typedef struct s_mlx
 {
 	void		*mlx;
 	void		*win;
+//	int			lst_keycode;
 	t_map		map;
 }				t_mlx;
 
@@ -80,7 +84,10 @@ typedef struct s_sprites
 {
 	t_img		wall;
 	t_img		space;
-	t_img		player;
+	t_img		player_up;
+	t_img		player_down;
+	t_img		player_right;
+	t_img		player_left;
 	t_img		item;
 	t_img		exit;
 }				t_sprites;
