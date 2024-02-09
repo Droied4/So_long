@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 16:27:46 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/07 16:12:58 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:30:56 by carmeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_event_listener(int keycode, t_mlx *mlx)
 		aux = ft_player_up(&mlx->map);
 	if (aux == 1)
 		ft_event_listener(ESC, mlx);
-	ft_render_daddy(mlx);
+	ft_render_daddy(mlx, NULL);
 	ft_printf("\nCollectables = %i\n", mlx->map.max_items);
 	return (0);
 }
@@ -44,9 +44,13 @@ int	ft_event_listener(int keycode, t_mlx *mlx)
 		ft_printf("%s\n", mlx->map.map[i]);*/
 
 //mensaje para el deivid del futuro
-//ya casi lo tienes solo tienes que iniciar con la direccion que te manden del keycode si la direccion
-//ya es igual a la que esta mirando entonces te saltas cualquier accion y vas al otro callback
-//maybe hay que cambiar el render daddy
+//ya cambie las cosas buena suerte arreglando todas las mamadas que hice sin compilar en 42 hijo de puta
+//falta lo del tamaño en el checkmap de utils1 y utils2 tienes espacio solo para 2 funciones mas
+//creo que simplemente debes hacer una regla de 3 en la que si x tamaño es igual al 100% entonces con y
+//tamaño cuanto seria creo que por ahi van los tiros 
+//utiliza el bytes map creo que es la clave
+//ahhh y falta hacer lo de los sprites que la verdad me da muchisima paja
+//quisiera estar escrito en c para ser un puntero que apunte a tu corazon bb.
 int	ft_sprite_dir(int keycode, t_mlx *mlx)
 {
 	int dir;
@@ -57,12 +61,11 @@ int	ft_sprite_dir(int keycode, t_mlx *mlx)
 		exit(0);
 	}
 	if (keycode == LEFT_ARROW || keycode == A_BUTTON)
-		aux = ft_player_right(&mlx->map);
+		ft_render_daddy(mlx, PLAYER_LEFT_PATH);
 	if (keycode == RIGHT_ARROW || keycode == D_BUTTON)
-		aux = ft_player_left(&mlx->map);
+		ft_render_daddy(mlx, PLAYER_RIGHT_PATH);
 	if (keycode == DOWN_ARROW || keycode == S_BUTTON)
-		aux =ft_player_down(&mlx->map);
+		ft_render_daddy(mlx, PLAYER_DOWN_PATH);
 	if (keycode == UP_ARROW || keycode == W_BUTTON)
-		aux = ft_player_up(&mlx->map);
-	ft_render_daddy(mlx);
+		ft_render_daddy(mlx, PLAYER_UP_PATH);
 }

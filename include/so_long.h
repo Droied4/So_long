@@ -6,7 +6,7 @@
 /*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 22:46:45 by carmeno           #+#    #+#             */
-/*   Updated: 2024/02/07 16:12:04 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:20:44 by carmeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@
 # define SCREEN_HEIGHT 720
 # define SPRITE_SIZE 16
 # define SPACE '0'
-# define SPACE_PATH "./sprites/space.xpm"
+# define SPACE_PATH "./textures/space.xpm"
 # define WALL '1'
-# define WALL_PATH "./sprites/wall.xpm"
+# define WALL_PATH "./textures/wall.xpm"
 # define ITEM 'C'
-# define ITEM_PATH "./sprites/item.xpm"
+# define ITEM_PATH "./textures/item.xpm"
 # define EXIT 'E'
-# define EXIT_PATH "./sprites/exit.xpm"
+# define EXIT_PATH "./textures/exit.xpm"
 # define PLAYER 'P'
-# define PLAYER_UP_PATH "./sprites/player.xpm"
-# define PLAYER_DOWN_PATH "./sprites/player.xpm"
-# define PLAYER_RIGHT_PATH "./sprites/player.xpm"
-# define PLAYER_LEFT_PATH "./sprites/player.xpm"
+# define PLAYER_UP_PATH "./textures/player.xpm"
+# define PLAYER_DOWN_PATH "./textures/player.xpm"
+# define PLAYER_RIGHT_PATH "./textures/player.xpm"
+# define PLAYER_LEFT_PATH "./textures/player.xpm"
 # define ESC 53
 # define LEFT_ARROW 123
 # define RIGHT_ARROW 124
@@ -84,6 +84,7 @@ typedef struct s_sprites
 {
 	t_img		wall;
 	t_img		space;
+	int		dir;
 	t_img		player_up;
 	t_img		player_down;
 	t_img		player_right;
@@ -97,6 +98,8 @@ typedef struct s_sprites
 		MAIN
 ╚════════════════════╝
 */
+
+
 /*
 ╔════════════════════╗
 			MAPS
@@ -118,7 +121,6 @@ void			ft_is_valid(t_map *map, t_vector2d cor);
 int				ft_check_horizontal_map(t_map *map);
 int				ft_check_vertical_map(t_map *map);
 void			ft_check_rectangularmap(t_map *map);
-void			ft_init_map(t_map *map);
 int				*ft_check_components(char pos, int *keeper);
 
 /*
@@ -137,6 +139,8 @@ int				*ft_find_component(t_map *map, char c);
 ╚════════════════════╝
 */
 int	ft_event_listener(int keycode, t_mlx *mlx);
+int     ft_sprite_dir(int keycode, t_mlx *mlx);
+
 /*
 ╔════════════════════╗
 		MOVEMENTS
@@ -162,32 +166,7 @@ void			ft_free_array(char **matriz);
 ╚════════════════════╝
 */
 
-void	ft_render_daddy(t_mlx *mlx);
+void	ft_render_daddy(t_mlx *mlx, char *play_dir);
 void	ft_construct_image(t_mlx *mlx, t_sprites *spr);
-
-/*
- *	SHAPES
- *
- * */
-
-void			draw_triangle(t_img);
-void			draw_cube(t_img);
-void			draw_circle(t_img img, int center_x, int center_y, int radius);
-
-/*
- *
- *	ALGORITMOS
- *
- * */
-
-void			dda_line(t_img img, t_vector2d p1, t_vector2d p2);
-
-/*
- *
- * UTILS
- *
- * */
-
-void			my_pixel_put(t_img *data, int x, int y, int color);
 
 #endif

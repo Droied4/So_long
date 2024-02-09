@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:46:04 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/07 16:13:00 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:21:22 by carmeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	main(int argc, char **argv)
 	if (!mlx.win)
 		exit(1);
 	else
-		ft_render_daddy(&mlx);
-	mlx_hook(mlx.win, 2, 0, ft_event_listener, &mlx);
+		ft_render_daddy(&mlx, NULL);
+	mlx_hook(mlx.win, 2, 0, ft_sprite_dir, &mlx);
 	mlx_hook(mlx.win, 2, 0, ft_event_listener, &mlx);
 	mlx_loop(mlx.mlx);
 	return (0);
