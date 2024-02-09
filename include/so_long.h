@@ -6,7 +6,7 @@
 /*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 22:46:45 by carmeno           #+#    #+#             */
-/*   Updated: 2024/02/09 14:20:44 by carmeno          ###   ########.fr       */
+/*   Updated: 2024/02/09 17:30:51 by carmeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct s_mlx
 {
 	void		*mlx;
 	void		*win;
-//	int			lst_keycode;
+	int		mov;
 	t_map		map;
 }				t_mlx;
 

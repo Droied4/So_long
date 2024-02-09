@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:46:04 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/09 14:21:22 by carmeno          ###   ########.fr       */
+/*   Updated: 2024/02/09 17:32:40 by carmeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 	mlx.mlx = mlx_init();
 	if (!mlx.mlx)
 		exit(1);
+	mlx.mov = 0;
 	mlx.win = mlx_new_window(mlx.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "-Droied-");
 	if (!mlx.win)
 		exit(1);

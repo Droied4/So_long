@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 16:27:46 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/09 14:30:56 by carmeno          ###   ########.fr       */
+/*   Updated: 2024/02/09 17:32:08 by carmeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_event_listener(int keycode, t_mlx *mlx)
 	int aux;
 
 	aux = 0;
-	//mlx->lst_keycode = keycode;
+	++mlx->mov;
 	if (keycode == ESC)
 	{
 		ft_free_array(mlx->map.map);
@@ -35,6 +35,7 @@ int	ft_event_listener(int keycode, t_mlx *mlx)
 	if (aux == 1)
 		ft_event_listener(ESC, mlx);
 	ft_render_daddy(mlx, NULL);
+	ft_printf("\nMovements = %i\n", mlx->mov);
 	ft_printf("\nCollectables = %i\n", mlx->map.max_items);
 	return (0);
 }
