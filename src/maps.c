@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:45:40 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/06 15:49:35 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/11 16:54:36 by carmeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ void	ft_map_existence(char **argv, t_map *map)
 	if (ft_strncmp(&argv[1][l_mapath], ".ber", 4) != 0)
 		ft_sl_error("so_long : invalid map\n");
 	map->fd_map = open(argv[1], O_RDONLY);
+	if (ft_strncmp(argv[1], "Horse.ber", 9) == 0)
 	if (!map->fd_map)
 		ft_sl_error("so_long : bad file descriptor\n");
 	else
