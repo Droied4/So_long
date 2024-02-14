@@ -6,7 +6,7 @@
 /*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 22:46:45 by carmeno           #+#    #+#             */
-/*   Updated: 2024/02/09 17:30:51 by carmeno          ###   ########.fr       */
+/*   Updated: 2024/02/14 17:59:20 by carmeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct s_mlx
 {
 	void		*mlx;
 	void		*win;
-	int		mov;
+	int			mov;
 	t_map		map;
 }				t_mlx;
 
@@ -84,7 +84,7 @@ typedef struct s_sprites
 {
 	t_img		wall;
 	t_img		space;
-	int		dir;
+	int			dir;
 	t_img		player_up;
 	t_img		player_down;
 	t_img		player_right;
@@ -98,7 +98,6 @@ typedef struct s_sprites
 		MAIN
 ╚════════════════════╝
 */
-
 
 /*
 ╔════════════════════╗
@@ -138,18 +137,18 @@ int				*ft_find_component(t_map *map, char c);
 		CALLBACK
 ╚════════════════════╝
 */
-int	ft_event_listener(int keycode, t_mlx *mlx);
-int     ft_sprite_dir(int keycode, t_mlx *mlx);
+int				ft_event_listener(int keycode, t_mlx *mlx);
+int				ft_sprite_dir(int keycode, t_mlx *mlx);
 
 /*
 ╔════════════════════╗
 		MOVEMENTS
 ╚════════════════════╝
 */
-int	ft_player_down(t_map *map);
-int	ft_player_up(t_map *map);
-int	ft_player_right(t_map *map);
-int	ft_player_left(t_map *map);
+int				ft_player_down(t_map *map);
+int				ft_player_up(t_map *map);
+int				ft_player_right(t_map *map);
+int				ft_player_left(t_map *map);
 
 /*
 ╔════════════════════╗
@@ -166,7 +165,7 @@ void			ft_free_array(char **matriz);
 ╚════════════════════╝
 */
 
-void	ft_render_daddy(t_mlx *mlx, char *play_dir);
-void	ft_construct_image(t_mlx *mlx, t_sprites *spr);
+void			ft_render_daddy(t_mlx *mlx, char *play_dir);
+void			ft_construct_image(t_mlx *mlx, t_sprites *spr);
 
 #endif

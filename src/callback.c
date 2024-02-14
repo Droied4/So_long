@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 16:27:46 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/11 16:56:52 by carmeno          ###   ########.fr       */
+/*   Updated: 2024/02/14 17:56:56 by carmeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_event_listener(int keycode, t_mlx *mlx)
 {
-	int aux;
+	int	aux;
 
 	aux = 0;
 	++mlx->mov;
@@ -29,7 +29,7 @@ int	ft_event_listener(int keycode, t_mlx *mlx)
 	if (keycode == RIGHT_ARROW || keycode == D_BUTTON)
 		aux = ft_player_left(&mlx->map);
 	if (keycode == DOWN_ARROW || keycode == S_BUTTON)
-		aux =ft_player_down(&mlx->map);
+		aux = ft_player_down(&mlx->map);
 	if (keycode == UP_ARROW || keycode == W_BUTTON)
 		aux = ft_player_up(&mlx->map);
 	if (aux == 1)
@@ -44,17 +44,21 @@ int	ft_event_listener(int keycode, t_mlx *mlx)
 	while (++i < mlx->map.height_map)
 		ft_printf("%s\n", mlx->map.map[i]);*/
 
-//mensaje para el deivid del futuro
-//ya cambie las cosas buena suerte arreglando todas las mamadas que hice sin compilar en 42 hijo de puta
-//falta lo del tamaño en el checkmap de utils1 y utils2 tienes espacio solo para 2 funciones mas
-//creo que simplemente debes hacer una regla de 3 en la que si x tamaño es igual al 100% entonces con y
-//tamaño cuanto seria creo que por ahi van los tiros 
-//utiliza el bytes map creo que es la clave
-//ahhh y falta hacer lo de los sprites que la verdad me da muchisima paja
-//quisiera estar escrito en c para ser un puntero que apunte a tu corazon bb.
+// mensaje para el deivid del futuro
+// ya cambie las cosas buena suerte arreglando todas las mamadas que hice sin 
+// compilar en 42 hijo de puta
+// falta lo del tamaño en el checkmap de utils1 y utils2 tienes 
+// espacio solo para 2 funciones mas
+// creo que simplemente debes hacer una regla de 3 en la que si 
+// x tamaño es igual al 100% entonces con y
+// tamaño cuanto seria creo que por ahi van los tiros
+// utiliza el bytes map creo que es la clave
+// ahhh y falta hacer lo de los sprites que la verdad me da muchisima paja
+// quisiera estar escrito en c para ser un puntero que apunte a tu corazon bb.
 int	ft_sprite_dir(int keycode, t_mlx *mlx)
 {
-	int dir;
+	int	dir;
+
 	if (keycode == ESC)
 	{
 		ft_free_array(mlx->map.map);

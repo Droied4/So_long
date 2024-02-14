@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:48:50 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/07 10:22:32 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/14 17:57:15 by carmeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int	ft_slpath_exist(t_map *checkmap, t_vector2d cor)
 
 char	**ft_matrizdup(const char **matriz)
 {
-	char **dup;
-	int row;
+	char	**dup;
+	int		row;
 
 	row = 0;
 	while (matriz[row])
@@ -76,11 +76,11 @@ char	**ft_matrizdup(const char **matriz)
 	return (dup);
 }
 
-int *ft_find_component(t_map *map, char c)
+int	*ft_find_component(t_map *map, char c)
 {
-	int	y;
-	int	x;
-	static int rslt[2];
+	int			y;
+	int			x;
+	static int	rslt[2];
 
 	y = 0;
 	x = 0;

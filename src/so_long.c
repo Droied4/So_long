@@ -6,36 +6,38 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:46:04 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/11 16:56:33 by carmeno          ###   ########.fr       */
+/*   Updated: 2024/02/14 17:57:24 by carmeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void    put_horse(t_mlx *mlx)
+static void	put_horse(t_mlx *mlx)
 {
-        t_img photo;
+	t_img	photo;
 
-        photo.width = SPRITE_SIZE;
-        photo.height = SPRITE_SIZE;
-        photo.image = mlx_xpm_file_to_image(mlx->mlx, horse_path*/, &photo.width, &photo.height);
-        if (photo->image == NULL)
-        {
-                ft_dprintf(2, "Error al cargar la imagen desde el archivo .XPM");
-                exit(1);
-        }
-        photo.addr = mlx_get_data_addr(photo.image, &photo.bpp, &image.l_line, &image.endian);
-        while (1)
-        {
-                ft_dprintf(2, "Horse Supremacy");
-                mlx_put_image_to_window(mlx->mlx, mlx->win, photo.image, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
-        }
+	photo.width = SPRITE_SIZE;
+	photo.height = SPRITE_SIZE;
+	photo.image = mlx_xpm_file_to_image(mlx->mlx, horse_path * /, &photo.width,
+			&photo.height);
+	if (photo->image == NULL)
+	{
+		ft_dprintf(2, "Error al cargar la imagen desde el archivo .XPM");
+		exit(1);
+	}
+	photo.addr = mlx_get_data_addr(photo.image, &photo.bpp, &image.l_line,
+			&image.endian);
+	while (1)
+	{
+		ft_dprintf(2, "Horse Supremacy");
+		mlx_put_image_to_window(mlx->mlx, mlx->win, photo.image, SCREEN_WIDTH
+			/ 2, SCREEN_HEIGHT / 2);
+	}
 }
-
 
 int	main(int argc, char **argv)
 {
-	t_mlx 	mlx;
+	t_mlx	mlx;
 
 	if (argc != 2)
 		ft_sl_error("so_long : two arguments are needed\n");
