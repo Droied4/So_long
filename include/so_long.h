@@ -6,7 +6,7 @@
 /*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 22:46:45 by carmeno           #+#    #+#             */
-/*   Updated: 2024/02/14 17:59:20 by carmeno          ###   ########.fr       */
+/*   Updated: 2024/02/15 16:05:52 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@
 # define EXIT 'E'
 # define EXIT_PATH "./textures/exit.xpm"
 # define PLAYER 'P'
-# define PLAYER_UP_PATH "./textures/player.xpm"
-# define PLAYER_DOWN_PATH "./textures/player.xpm"
-# define PLAYER_RIGHT_PATH "./textures/player.xpm"
-# define PLAYER_LEFT_PATH "./textures/player.xpm"
+# define PLAYER_UP_PATH "./textures/player_up.xpm"
+# define PLAYER_DOWN_PATH "./textures/player_down.xpm"
+# define PLAYER_LEFT_PATH "./textures/player_right.xpm"
+# define PLAYER_RIGHT_PATH "./textures/player_right.xpm"
+# define HORSE_PATH "./textures/horse.xpm"
 # define ESC 53
 # define LEFT_ARROW 123
 # define RIGHT_ARROW 124
@@ -84,13 +85,13 @@ typedef struct s_sprites
 {
 	t_img		wall;
 	t_img		space;
-	int			dir;
 	t_img		player_up;
 	t_img		player_down;
 	t_img		player_right;
 	t_img		player_left;
 	t_img		item;
 	t_img		exit;
+	int			dir;
 }				t_sprites;
 
 /*
@@ -165,7 +166,7 @@ void			ft_free_array(char **matriz);
 ╚════════════════════╝
 */
 
-void			ft_render_daddy(t_mlx *mlx, char *play_dir);
+void			ft_render_daddy(t_mlx *mlx, int	play_dir);
 void			ft_construct_image(t_mlx *mlx, t_sprites *spr);
 
 #endif

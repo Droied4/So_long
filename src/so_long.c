@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:46:04 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/14 17:57:24 by carmeno          ###   ########.fr       */
+/*   Updated: 2024/02/15 16:16:05 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,17 @@ static void	put_horse(t_mlx *mlx)
 
 	photo.width = SPRITE_SIZE;
 	photo.height = SPRITE_SIZE;
-	photo.image = mlx_xpm_file_to_image(mlx->mlx, horse_path * /, &photo.width,
+	photo.image = mlx_xpm_file_to_image(mlx->mlx, HORSE_PATH, &photo.width,
 			&photo.height);
-	if (photo->image == NULL)
+	if (photo.image == NULL)
 	{
 		ft_dprintf(2, "Error al cargar la imagen desde el archivo .XPM");
 		exit(1);
 	}
-	photo.addr = mlx_get_data_addr(photo.image, &photo.bpp, &image.l_line,
-			&image.endian);
-	while (1)
-	{
-		ft_dprintf(2, "Horse Supremacy");
-		mlx_put_image_to_window(mlx->mlx, mlx->win, photo.image, SCREEN_WIDTH
-			/ 2, SCREEN_HEIGHT / 2);
-	}
+	photo.addr = mlx_get_data_addr(photo.image, &photo.bpp, &photo.l_line,
+			&photo.endian);
+	ft_dprintf(2, "Horse Supremacy");
+	mlx_put_image_to_window(mlx->mlx, mlx->win, photo.image, SCREEN_WIDTH /2, 0);
 }
 
 int	main(int argc, char **argv)
@@ -49,10 +45,9 @@ int	main(int argc, char **argv)
 	mlx.win = mlx_new_window(mlx.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "-Droied-");
 	if (!mlx.win)
 		exit(1);
-	if (ft_strncmp(argv[1], "Horse.ber") == 0)
-		put_horse(mlx);
-	ft_render_daddy(&mlx, NULL);
-	mlx_hook(mlx.win, 2, 0, ft_sprite_dir, &mlx);
+	if (ft_strncmp(argv[1], "Horse.ber", 9) == 0)
+		put_horse(&mlx);
+	ft_render_daddy(&mlx, 0);
 	mlx_hook(mlx.win, 2, 0, ft_event_listener, &mlx);
 	mlx_loop(mlx.mlx);
 	return (0);
