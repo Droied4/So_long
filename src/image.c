@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 13:47:52 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/16 12:00:07 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/16 13:20:17 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@ static void	ft_put_player(t_mlx *mlx, t_sprites *spr, t_vector2d coor_win)
 		coor_win.y);
 	if (spr->dir == 1)
 		mlx_put_image_to_window(mlx->mlx, mlx->win, spr->player_up.image,
-			coor_win.x, coor_win.y - (SPRITE_SIZE/2));
+			coor_win.x, coor_win.y - (SPRITE_SIZE / 2));
 	else if (spr->dir == 2)
 		mlx_put_image_to_window(mlx->mlx, mlx->win, spr->player_down.image,
-			coor_win.x, coor_win.y - (SPRITE_SIZE/2));
+			coor_win.x, coor_win.y - (SPRITE_SIZE / 2));
 	else if (spr->dir == 3)
 		mlx_put_image_to_window(mlx->mlx, mlx->win, spr->player_left.image,
-			coor_win.x, coor_win.y - (SPRITE_SIZE/2));
+			coor_win.x, coor_win.y - (SPRITE_SIZE / 2));
 	else if (spr->dir == 4)
 		mlx_put_image_to_window(mlx->mlx, mlx->win, spr->player_right.image,
-			coor_win.x, coor_win.y - (SPRITE_SIZE/2));
+			coor_win.x, coor_win.y - (SPRITE_SIZE / 2));
 	else
 		mlx_put_image_to_window(mlx->mlx, mlx->win, spr->player_down.image,
-			coor_win.x, coor_win.y - (SPRITE_SIZE/2));
+			coor_win.x, coor_win.y - (SPRITE_SIZE / 2));
 }
 
 static void	ft_put_image(t_mlx *mlx, t_sprites *spr, t_vector2d coor_win,

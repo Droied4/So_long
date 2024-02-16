@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 16:27:46 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/16 11:45:49 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/16 13:20:10 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_event_listener(int keycode, t_mlx *mlx)
 	return (0);
 }
 
-int ft_sprite_dir(int keycode, t_mlx *mlx)
+int	ft_sprite_dir(int keycode, t_mlx *mlx)
 {
 	if (keycode == ESC)
 	{

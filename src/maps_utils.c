@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 13:14:26 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/16 12:00:18 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/16 13:20:31 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_win_size(t_mlx *mlx)
 {
 	if (mlx->map.height_map >= mlx->map.width_map)
 		mlx->screen_width = (mlx->map.height_map * 32);
-	else	
+	else
 		mlx->screen_width = (mlx->map.width_map * 32);
 	mlx->screen_height = (mlx->map.width_map + mlx->map.height_map) * 8;
 }
