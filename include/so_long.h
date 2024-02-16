@@ -6,7 +6,7 @@
 /*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 22:46:45 by carmeno           #+#    #+#             */
-/*   Updated: 2024/02/16 11:54:34 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/16 12:10:23 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int				*ft_check_components(char pos, int *keeper);
 ╚════════════════════╝
 */
 
+void			ft_too_large(t_map *map);
 void			floodfill(t_map *checkmap, t_vector2d cor);
 int				ft_slpath_exist(t_map *checkmap, t_vector2d cor);
 char			**ft_matrizdup(const char **matriz);

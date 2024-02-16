@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:45:40 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/16 10:01:26 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/16 12:35:15 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,11 @@ void	ft_map_existence(char **argv, t_map *map)
 	if (ft_strncmp(&argv[1][l_mapath], ".ber", 4) != 0)
 		ft_sl_error("so_long : invalid map\n");
 	map->fd_map = open(argv[1], O_RDONLY);
-	if (!map->fd_map)
+	if (map->fd_map < 0)
 		ft_sl_error("so_long : bad file descriptor\n");
 	else
+	{
 		ft_create_map(map, map->fd_map);
+		ft_too_large(map);
+	}
 }

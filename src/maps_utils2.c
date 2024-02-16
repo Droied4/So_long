@@ -6,11 +6,19 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:48:50 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/14 17:57:15 by carmeno          ###   ########.fr       */
+/*   Updated: 2024/02/16 12:35:13 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	ft_too_large(t_map *map)
+{
+	if (map->height_map >= 80)
+		ft_map_error(map, "so_long : soo long map\n");
+	if (map->width_map >= 80)
+		ft_map_error(map, "so_long : soo long map\n");
+}
 
 void	floodfill(t_map *checkmap, t_vector2d cor)
 {
