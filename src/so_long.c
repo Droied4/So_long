@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:46:04 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/16 13:47:21 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/16 13:49:31 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static void	put_cheems(t_mlx *mlx)
 	photo.addr = mlx_get_data_addr(photo.image, &photo.bpp, &photo.l_line,
 			&photo.endian);
 	ft_dprintf(2, "Cheems\n");
-	mlx_put_image_to_window(mlx->mlx, mlx->win, photo.image, mlx->screen_width / 2, 0);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, photo.image, mlx->screen_width
+		/ 2, 0);
 }
 
 int	main(int argc, char **argv)
