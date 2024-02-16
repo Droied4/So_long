@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 11:50:12 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/16 13:21:34 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/16 13:45:52 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define PLAYER_DOWN_PATH "./textures/player_down.xpm"
 # define PLAYER_LEFT_PATH "./textures/player_right.xpm"
 # define PLAYER_RIGHT_PATH "./textures/player_right.xpm"
-# define HORSE_PATH "./textures/horse.xpm"
+# define CHEEMS_PATH "./textures/cheems.xpm"
 # define ESC 53
 # define LEFT_ARROW 123
 # define RIGHT_ARROW 124

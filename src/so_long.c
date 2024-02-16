@@ -6,19 +6,19 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:46:04 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/16 13:20:38 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/16 13:47:21 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	put_horse(t_mlx *mlx)
+static void	put_cheems(t_mlx *mlx)
 {
 	t_img	photo;
 
 	photo.width = SPRITE_SIZE;
 	photo.height = SPRITE_SIZE;
-	photo.image = mlx_xpm_file_to_image(mlx->mlx, HORSE_PATH, &photo.width,
+	photo.image = mlx_xpm_file_to_image(mlx->mlx, CHEEMS_PATH, &photo.width,
 			&photo.height);
 	if (photo.image == NULL)
 	{
@@ -27,9 +27,8 @@ static void	put_horse(t_mlx *mlx)
 	}
 	photo.addr = mlx_get_data_addr(photo.image, &photo.bpp, &photo.l_line,
 			&photo.endian);
-	ft_dprintf(2, "Horse Supremacy");
-	mlx_put_image_to_window(mlx->mlx, mlx->win, photo.image, mlx->screen_width
-		/ 2, 0);
+	ft_dprintf(2, "Cheems\n");
+	mlx_put_image_to_window(mlx->mlx, mlx->win, photo.image, mlx->screen_width / 2, 0);
 }
 
 int	main(int argc, char **argv)
@@ -48,8 +47,8 @@ int	main(int argc, char **argv)
 			"-Droied-");
 	if (!mlx.win)
 		exit(1);
-	if (ft_strncmp(argv[1], "Horse.ber", 9) == 0)
-		put_horse(&mlx);
+	if (ft_strncmp(argv[1], "Cheems.ber", 9) == 0)
+		put_cheems(&mlx);
 	ft_render_daddy(&mlx, 0);
 	mlx_hook(mlx.win, 2, 0, ft_event_listener, &mlx);
 	mlx_loop(mlx.mlx);
