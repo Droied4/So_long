@@ -6,11 +6,20 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 13:14:26 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/09 14:19:57 by carmeno          ###   ########.fr       */
+/*   Updated: 2024/02/16 11:48:47 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	ft_win_size(t_mlx *mlx)
+{
+	if (mlx->map.height_map >= mlx->map.width_map)
+		mlx->screen_width = (mlx->map.height_map * 32);
+	else	
+		mlx->screen_width = (mlx->map.width_map * 32);
+	mlx->screen_height = (mlx->map.width_map + mlx->map.height_map) * 9;
+}
 
 int	*ft_check_components(char pos, int *keeper)
 {

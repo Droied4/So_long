@@ -6,7 +6,7 @@
 #    By: carmeno <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 22:34:39 by carmeno           #+#    #+#              #
-#    Updated: 2024/02/06 16:16:05 by deordone         ###   ########.fr        #
+#    Updated: 2024/02/16 11:53:25 by deordone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,9 @@ GNLINE = $(GNLINE_PATH)/get_next_line.a
 MINILIBX_MAC = $(MAC_MINILIBX_PATH)/libmlx.a
 MINILIBX_LINUX = $(LINUX_MINILIBX_PATH)/libmlx_Linux.a
 
-HEADER = $(INCLUDE_PATH)/so_long.h
+HEADER += $(INCLUDE_PATH)/so_long.h
+HEADER += $(INCLUDE_PATH)/sl_struct.h
+HEADER += $(INCLUDE_PATH)/sl_macro.h
 SOURCES = so_long.c maps.c maps_utils.c maps_utils2.c map_error.c movement.c callback.c image.c
 
 # ╔══════════════════════════════════════════════════════════════════════════╗ #  

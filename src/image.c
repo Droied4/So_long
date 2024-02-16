@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 13:47:52 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/15 16:16:18 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/16 10:49:40 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	ft_construct_image(t_mlx *mlx, t_sprites *spr)
 	iter.x = -1;
 	while (mlx->map.map[++iter.x] != NULL)
 	{
-		pos.x = (SCREEN_WIDTH / 2) + temp.x;
+		pos.x = (mlx->screen_width / 2) + temp.x;
 		pos.y = temp.y;
 		temp.x += SPRITE_SIZE;
 		temp.y += SPRITE_SIZE / 2;

@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:46:04 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/15 16:16:05 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/16 11:49:35 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	put_horse(t_mlx *mlx)
 	photo.addr = mlx_get_data_addr(photo.image, &photo.bpp, &photo.l_line,
 			&photo.endian);
 	ft_dprintf(2, "Horse Supremacy");
-	mlx_put_image_to_window(mlx->mlx, mlx->win, photo.image, SCREEN_WIDTH /2, 0);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, photo.image, mlx->screen_width /2, 0);
 }
 
 int	main(int argc, char **argv)
@@ -38,11 +38,12 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		ft_sl_error("so_long : two arguments are needed\n");
 	ft_map_existence(argv, &mlx.map);
+	ft_win_size(&mlx);
 	mlx.mlx = mlx_init();
 	if (!mlx.mlx)
 		exit(1);
 	mlx.mov = 0;
-	mlx.win = mlx_new_window(mlx.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "-Droied-");
+	mlx.win = mlx_new_window(mlx.mlx, mlx.screen_width, mlx.screen_height, "-Droied-");
 	if (!mlx.win)
 		exit(1);
 	if (ft_strncmp(argv[1], "Horse.ber", 9) == 0)

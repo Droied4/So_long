@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 16:21:44 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/07 15:38:26 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/16 11:09:45 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	ft_item(t_map *map)
 	--map->max_items;
 }
 
-int	ft_player_left(t_map *map)
+int	ft_player_left(t_map *map, t_mlx *mlx)
 {
 	char	temp;
 
@@ -37,11 +37,12 @@ int	ft_player_left(t_map *map)
 				map->map[map->player.y][map->player.x - 1];
 		map->map[map->player.y][map->player.x - 1] = temp;
 		map->player.x -= 1;
+		++mlx->mov;
 	}
 	return (0);
 }
 
-int	ft_player_right(t_map *map)
+int	ft_player_right(t_map *map, t_mlx *mlx)
 {
 	char	temp;
 
@@ -60,11 +61,12 @@ int	ft_player_right(t_map *map)
 				map->map[map->player.y][map->player.x + 1];
 		map->map[map->player.y][map->player.x + 1] = temp;
 		map->player.x += 1;
+		++mlx->mov;
 	}
 	return (0);
 }
 
-int	ft_player_up(t_map *map)
+int	ft_player_up(t_map *map, t_mlx *mlx)
 {
 	char	temp;
 
@@ -83,11 +85,12 @@ int	ft_player_up(t_map *map)
 				- 1][map->player.x];
 		map->map[map->player.y - 1][map->player.x] = temp;
 		map->player.y -= 1;
+		++mlx->mov;
 	}
 	return (0);
 }
 
-int	ft_player_down(t_map *map)
+int	ft_player_down(t_map *map, t_mlx *mlx)
 {
 	char	temp;
 
@@ -106,6 +109,7 @@ int	ft_player_down(t_map *map)
 				+ 1][map->player.x];
 		map->map[map->player.y + 1][map->player.x] = temp;
 		map->player.y += 1;
+		++mlx->mov;
 	}
 	return (0);
 }
