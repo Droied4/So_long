@@ -6,7 +6,7 @@
 /*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 22:46:45 by carmeno           #+#    #+#             */
-/*   Updated: 2024/02/16 13:46:34 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/19 11:52:47 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int		*ft_find_component(t_map *map, char c);
 		CALLBACK
 ╚════════════════════╝
 */
+int		ft_destroy_window(t_mlx *mlx);
 int		ft_event_listener(int keycode, t_mlx *mlx);
 int		ft_sprite_dir(int keycode, t_mlx *mlx);
 

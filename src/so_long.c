@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:46:04 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/16 13:49:31 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/19 11:52:25 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	main(int argc, char **argv)
 		put_cheems(&mlx);
 	ft_render_daddy(&mlx, 0);
 	mlx_hook(mlx.win, 2, 0, ft_event_listener, &mlx);
+	mlx_hook(mlx.win, 17, 0L, ft_destroy_window, &mlx);
 	mlx_loop(mlx.mlx);
 	return (0);
 }
