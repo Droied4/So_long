@@ -6,7 +6,7 @@
 /*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 22:46:45 by carmeno           #+#    #+#             */
-/*   Updated: 2024/02/19 11:52:47 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/19 12:39:08 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,10 @@ int		ft_player_left(t_map *map, t_mlx *mlx);
 		ERROR
 ╚════════════════════╝
 */
+char	*ft_sl_strjoin(char const *s1, char const *s2);
 void	ft_map_error(t_map *map, char *message);
 void	ft_sl_error(char *message);
-void	ft_free_array(char **matriz);
+void	ft_free_array(char ***matriz);
 
 /*
 ╔════════════════════╗

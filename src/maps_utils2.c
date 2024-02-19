@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:48:50 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/16 12:35:13 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/19 12:44:41 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	**ft_matrizdup(const char **matriz)
 		dup[row] = ft_strdup(matriz[row]);
 		if (!dup[row])
 		{
-			ft_free_array(dup);
+			ft_free_array(&dup);
 			return (NULL);
 		}
 	}

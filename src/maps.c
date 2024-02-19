@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:45:40 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/16 12:35:15 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/19 12:46:27 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_is_valid(t_map *map, t_vector2d cor)
 {
 	t_map	checkmap;
-
+	(void)cor;
 	checkmap.map = ft_matrizdup((const char **)map->map);
 	checkmap.width_map = map->width_map;
 	checkmap.height_map = map->height_map;
@@ -24,10 +24,11 @@ void	ft_is_valid(t_map *map, t_vector2d cor)
 	floodfill(&checkmap, cor);
 	if (ft_slpath_exist(&checkmap, (t_vector2d){0, 0}) == 1)
 	{
-		ft_free_array(checkmap.map);
+		ft_free_array(&checkmap.map);
 		ft_map_error(map, "so_long: there is no possible path\n");
 	}
-	ft_free_array(checkmap.map);
+	ft_dprintf(2, "error\n");
+	ft_free_array(&checkmap.map);
 }
 
 void	ft_map_components(t_map *map)
@@ -52,6 +53,7 @@ void	ft_map_components(t_map *map)
 		|| keeper[4] < 1)
 		ft_map_error(map, "so long : a component is missing\n");
 	map->max_items = keeper[1];
+	free(keeper);
 }
 
 void	ft_is_closemap(t_map *map)
@@ -84,7 +86,7 @@ void	ft_create_map(t_map *map, int fd)
 	{
 		map->height_map++;
 		map->bytes_map += ft_strlen(line);
-		final_line = ft_strjoin(final_line, line);
+		final_line = ft_sl_strjoin(final_line, line);
 		line = get_next_line(map->fd_map);
 	}
 	ft_check_rectangularmap(map);
@@ -92,7 +94,8 @@ void	ft_create_map(t_map *map, int fd)
 		map->map = ft_split(final_line, '\n');
 	else
 		ft_map_error(map, "so_long : empty file\n");
-	ft_is_closemap(map);
+	ft_dprintf(2, "%p\n", final_line);
+	free(final_line);
 }
 
 void	ft_map_existence(char **argv, t_map *map)
@@ -109,6 +112,7 @@ void	ft_map_existence(char **argv, t_map *map)
 	else
 	{
 		ft_create_map(map, map->fd_map);
+		ft_is_closemap(map);
 		ft_too_large(map);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 16:27:46 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/19 11:52:49 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/19 12:23:09 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	ft_destroy_window(t_mlx *mlx)
 {
-		ft_free_array(mlx->map.map);
+		ft_free_array(&mlx->map.map);
+		close(mlx->map.fd_map);
 		mlx_destroy_window(mlx->mlx, mlx->win);
 		exit(0);
 }
