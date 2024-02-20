@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 11:03:36 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/19 12:45:04 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/20 13:05:24 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_map_error(t_map *map, char *message)
 {
-//	if (map->map)
 	ft_free_array(&map->map);
 	ft_dprintf(2, message);
 	exit(1);

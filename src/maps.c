@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:45:40 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/19 12:46:27 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/20 13:05:54 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	ft_is_valid(t_map *map, t_vector2d cor)
 		ft_free_array(&checkmap.map);
 		ft_map_error(map, "so_long: there is no possible path\n");
 	}
-	ft_dprintf(2, "error\n");
 	ft_free_array(&checkmap.map);
 }
 
@@ -94,7 +93,6 @@ void	ft_create_map(t_map *map, int fd)
 		map->map = ft_split(final_line, '\n');
 	else
 		ft_map_error(map, "so_long : empty file\n");
-	ft_dprintf(2, "%p\n", final_line);
 	free(final_line);
 }
 
