@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:48:50 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/21 10:31:45 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/21 10:34:56 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ void	floodfill(t_map *checkmap, t_vector2d cor)
 		return ;
 	if (checkmap->map[cor.y][cor.x] != SPACE
 		&& checkmap->map[cor.y][cor.x] != PLAYER
-		&& checkmap->map[cor.y][cor.x] != ITEM
-		&& checkmap->map[cor.y][cor.x] != EXIT)
+		&& checkmap->map[cor.y][cor.x] != ITEM)
 		return ;
 	checkmap->map[cor.y][cor.x] = 'F';
 	floodfill(checkmap, (t_vector2d){cor.x - 1, cor.y});
@@ -50,7 +49,6 @@ int	ft_slpath_exist(t_map *checkmap, t_vector2d cor)
 		{
 			cor.x++;
 			if (checkmap->map[cor.y][cor.x] == PLAYER
-				|| checkmap->map[cor.y][cor.x] == EXIT
 				|| checkmap->map[cor.y][cor.x] == ITEM)
 				return (1);
 		}
