@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 16:21:44 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/21 10:22:58 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/21 10:31:29 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	ft_player_left(t_map *map, t_mlx *mlx)
 	char	temp;
 
 	if (map->map[map->player.y][map->player.x - 1] != WALL
-		|| map->max_items <= 0)
+		&& (map->map[map->player.y][map->player.x - 1] != EXIT
+			|| map->max_items <= 0))
 	{
 		temp = map->map[map->player.y][map->player.x];
 		if (map->map[map->player.y][map->player.x - 1] == EXIT
@@ -46,7 +47,8 @@ int	ft_player_right(t_map *map, t_mlx *mlx)
 	char	temp;
 
 	if (map->map[map->player.y][map->player.x + 1] != WALL
-		|| map->max_items <= 0)
+		&& (map->map[map->player.y][map->player.x + 1] != EXIT
+			|| map->max_items <= 0))
 	{
 		temp = map->map[map->player.y][map->player.x];
 		if (map->map[map->player.y][map->player.x + 1] == EXIT
@@ -69,7 +71,8 @@ int	ft_player_up(t_map *map, t_mlx *mlx)
 	char	temp;
 
 	if (map->map[map->player.y - 1][map->player.x] != WALL
-		|| map->max_items <= 0)
+		&& (map->map[map->player.y - 1][map->player.x] != EXIT
+			|| map->max_items <= 0))
 	{
 		temp = map->map[map->player.y][map->player.x];
 		if (map->map[map->player.y - 1][map->player.x] == EXIT
@@ -92,7 +95,8 @@ int	ft_player_down(t_map *map, t_mlx *mlx)
 	char	temp;
 
 	if (map->map[map->player.y + 1][map->player.x] != WALL
-		|| map->max_items <= 0)
+		&& (map->map[map->player.y + 1][map->player.x] != EXIT
+			|| map->max_items <= 0))
 	{
 		temp = map->map[map->player.y][map->player.x];
 		if (map->map[map->player.y + 1][map->player.x] == EXIT

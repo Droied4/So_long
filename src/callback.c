@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 16:27:46 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/19 12:23:09 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/21 10:32:52 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	ft_event_listener(int keycode, t_mlx *mlx)
 	if (aux == 1)
 		ft_event_listener(ESC, mlx);
 	ft_sprite_dir(keycode, mlx);
-	ft_dprintf(2,"key = %i\n", keycode);
 	ft_printf("\nMovements = %i\n", mlx->mov);
 	ft_printf("\nCollectables = %i\n", mlx->map.max_items);
 	return (0);
