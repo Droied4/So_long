@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:45:40 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/21 10:34:34 by deordone         ###   ########.fr       */
+/*   Updated: 2024/02/21 10:41:10 by deordone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	ft_map_components(t_map *map)
 		while (map->map[i][++j])
 			keeper = ft_check_components(map->map[i][j], keeper);
 	}
-	if (keeper[0] > 1)
-		ft_map_error(map, "so long : more than one player\n");
+	if (keeper[0] > 1 || keeper[2] > 1)
+		ft_map_error(map, "so long : too many components\n");
 	if (keeper[0] < 1 || keeper[1] < 1 || keeper[2] < 1 || keeper[3] < 1
 		|| keeper[4] < 1)
 		ft_map_error(map, "so long : a component is missing\n");
