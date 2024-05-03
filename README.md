@@ -30,7 +30,9 @@ $ make fclean
 
 The way it is made is a 2d isometric
 
-(poner foto)
+![example](map_example.png)
+
+That's right you are a taxi driver that need to collect flowers and then escape into the water.
 
 ## Repository Structure
 
