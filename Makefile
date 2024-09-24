@@ -6,7 +6,7 @@
 #    By: carmeno <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/06 22:34:39 by carmeno           #+#    #+#              #
-#    Updated: 2024/02/16 11:53:25 by deordone         ###   ########.fr        #
+#    Updated: 2024/09/24 19:31:07 by droied           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,10 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE_PATH) -MMD -MF $(@:.o=.d) -g
 
 ifeq ($(OS), Darwin)
-	MLXFLAGS = -framework OpenGL -framework AppKit -lm
+	MLXFLAGS = -framework Cocoa -framework OpenGL -framework IOKit
 endif
 ifeq ($(OS), Linux)
-	MLXFLAGS = -lX11 -lXext -lm 
+	MLXFLAGS = -ldl -lglfw -lm
 endif
 
 # ╔══════════════════════════════════════════════════════════════════════════╗ #  
@@ -37,15 +37,13 @@ LIBFT_PATH	= $(LIBRARY_PATH)/libft
 PRINTF_PATH	= $(LIBRARY_PATH)/printf
 DPRINTF_PATH	= $(LIBRARY_PATH)/ft_dprintf
 GNLINE_PATH	= $(LIBRARY_PATH)/get_next_line
-LINUX_MINILIBX_PATH    = $(LIBRARY_PATH)/minilibx_linux
-MAC_MINILIBX_PATH = $(LIBRARY_PATH)/minilibx_mac
+MLX_PATH = $(LIBRARY_PATH)/MLX42
 
 LIBFT = $(LIBFT_PATH)/libft.a
 PRINTF = $(PRINTF_PATH)/libftprintf.a
 DPRINTF = $(DPRINTF_PATH)/libftdprintf.a
 GNLINE = $(GNLINE_PATH)/get_next_line.a
-MINILIBX_MAC = $(MAC_MINILIBX_PATH)/libmlx.a
-MINILIBX_LINUX = $(LINUX_MINILIBX_PATH)/libmlx_Linux.a
+MLX = $(MLX_PATH)/libmlx42.a
 
 HEADER += $(INCLUDE_PATH)/so_long.h
 HEADER += $(INCLUDE_PATH)/sl_struct.h
@@ -86,11 +84,9 @@ make_libs:
 #	@printf "$(CYAN)Compiling $(DPRINTF_PATH)$(NC)\n";
 	@make -C $(GNLINE_PATH) > /dev/null
 #	@printf "$(CYAN)Compiling $(GNLINE_PATH)$(NC)\n";
-	@make -C $(MAC_MINILIBX_PATH) > /dev/null 2>&1
-#	@printf "$(CYAN)Compiling $(MAC_MINILIBX_PATH)$(NC)\n";
 
 -include $(DEPS)
-$(NAME): $(OBJECTS) $(LIBFT) $(PRINTF) $(DPRINTF) $(GNLINE) $(MINILIBX_MAC)  #$(MINILIBX_LINUX) 
+$(NAME): $(OBJECTS) $(LIBFT) $(PRINTF) $(DPRINTF) $(GNLINE)
 	@printf "$(CYAN)$@ Compiled$(NC)\n";
 	@$(CC) $(CFLAGS) $^ -o $(NAME) $(MLXFLAGS)
 
@@ -115,13 +111,11 @@ $(GNLINE) :
 	@printf "$(CYAN)Compiling $@$(NC)\n";
 	@make -C $(GNLINE_PATH) > /dev/null
 
-$(MINILIBX_MAC) :
-	@printf "$(CYAN)Compiling $@$(NC)\n";
-	@make -C $(MAC_MINILIBX_PATH) > /dev/null 2>&1 
+# $(MLX_PATH)/Makefile:
+	# @$(call compile,cmake -B $(MLX_PATH) $(MLX_PATH))
 
-$(MINILIBX_LINUX) :
-	@printf "$(CYAN)Compiling $@$(NC)\n";
-	@make -C $(LINUX_MINILIBX_PATH) > /dev/null 2>&1
+# $(MLX): $(MLX_PATH)/Makefile
+	# @$(call compile,make -C $(MLX_PATH))
 
 clean:
 	@printf "$(CYAN)Cleaning objects and libraries$(NC)\n";
@@ -129,9 +123,6 @@ clean:
 	@make clean -C $(LIBFT_PATH) > /dev/null
 	@make clean -C $(PRINTF_PATH) > /dev/null
 	@make clean -C $(DPRINTF_PATH) > /dev/null
-	@make clean -C $(GNLINE_PATH) > /dev/null
-#	@make clean -C $(LINUX_MINILIBX_PATH)> /dev/null 2>&1
-	@make clean -C $(MAC_MINILIBX_PATH) > /dev/null 2>&1
 
 fclean : clean
 	@printf "$(CYAN)Cleaning objects, libraries and executable$(NC)\n";
@@ -139,9 +130,6 @@ fclean : clean
 	@make fclean -C $(LIBFT_PATH) > /dev/null
 	@make fclean -C $(PRINTF_PATH) > /dev/null
 	@make fclean -C $(DPRINTF_PATH) > /dev/null
-	@make fclean -C $(GNLINE_PATH) > /dev/null
-#	@make clean -C $(LINUX_MINILIBX_PATH)> /dev/null 2>&1
-	@make clean -C $(MAC_MINILIBX_PATH) > /dev/null 2>&1
 
 re: fclean all 
 

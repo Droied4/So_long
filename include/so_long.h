@@ -6,7 +6,7 @@
 /*   By: carmeno <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 22:46:45 by carmeno           #+#    #+#             */
-/*   Updated: 2024/02/19 12:39:08 by deordone         ###   ########.fr       */
+/*   Updated: 2024/09/24 20:10:04 by droied           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include "../library/ft_dprintf/ft_dprintf.h"
 # include "../library/get_next_line/get_next_line.h"
 # include "../library/libft/libft.h"
-# include "../library/minilibx_mac/mlx.h"
+# include "../library/MLX42/include/MLX42/MLX42.h"
 # include "../library/printf/ft_printf.h"
 # include "sl_macro.h"
 # include "sl_struct.h"
@@ -67,8 +67,8 @@ int		*ft_find_component(t_map *map, char c);
 ╚════════════════════╝
 */
 int		ft_destroy_window(t_mlx *mlx);
-int		ft_event_listener(int keycode, t_mlx *mlx);
-int		ft_sprite_dir(int keycode, t_mlx *mlx);
+int		ft_event_listener(t_mlx *mlx);
+int		ft_sprite_dir(t_mlx *mlx);
 
 /*
 ╔════════════════════╗

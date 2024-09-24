@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 11:50:21 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/19 12:00:39 by deordone         ###   ########.fr       */
+/*   Updated: 2024/09/24 19:42:32 by droied           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ typedef struct s_map
 
 typedef struct s_mlx
 {
-	void		*mlx;
-	void		*win;
+
+	mlx_t		*mlx;
+	mlx_image_t	*img;
 	int			mov;
 	t_map		map;
 	int			screen_width;

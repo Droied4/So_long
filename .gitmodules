@@ -1,15 +1,15 @@
 [submodule "library/libft"]
 	path = library/libft
 	url = git@github.com:Droied4/libft.git
-[submodule "library/minilibx_linux"]
-	path = library/minilibx_linux
-	url = git@github.com:42Paris/minilibx-linux.git
 [submodule "library/printf"]
 	path = library/printf
 	url = git@github.com:Droied4/printf.git
-[submodule "library/get_next_line"]
-	path = library/get_next_line
-	url = git@github.com:Droied4/get_next_line.git
 [submodule "library/ft_dprintf"]
 	path = library/ft_dprintf
 	url = git@github.com:Droied4/ft_dprintf.git
+[submodule "library/MLX42"]
+	path = library/MLX42
+	url = git@github.com:codam-coding-college/MLX42.git
+[submodule "library/get_next_line"]
+	path = library/get_next_line
+	url = git@github.com:Droied4/get_next_line.git

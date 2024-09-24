@@ -6,12 +6,12 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:46:04 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/21 17:47:10 by deordone         ###   ########.fr       */
+/*   Updated: 2024/09/24 20:09:16 by droied           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
+/*
 static void	put_cheems(t_mlx *mlx)
 {
 	t_img	photo;
@@ -30,29 +30,47 @@ static void	put_cheems(t_mlx *mlx)
 	ft_dprintf(2, "Cheems\n");
 	mlx_put_image_to_window(mlx->mlx, mlx->win, photo.image, mlx->screen_width
 		/ 2, 0);
+}*/
+
+static void game_init(void *param)
+{
+	t_mlx *core;
+
+	core = (t_mlx *)param;
+	ft_render_daddy(core, 0);
+	ft_event_listener(core);
+}
+
+static void	begin_window(t_mlx *core, int32_t width, int32_t height)
+{
+	mlx_t		*mlx;
+	mlx_image_t	*image;
+
+	mlx = mlx_init(width, height, "So Long", 0);
+	if (mlx == 0)
+		ft_sl_error("so_long : mlx error\n");
+	mlx_get_monitor_size(0, &width, &height);
+	mlx_set_window_size(mlx, width, height);
+	mlx_set_window_pos(mlx, 0, 0);
+	image = mlx_new_image(mlx, width, height);
+	if (image == 0 || (mlx_image_to_window(mlx, image, 0, 0)) < 0)
+		ft_sl_error("so_long : mlx error\n");
+	core->mlx = mlx;
+	core->img = image;
 }
 
 int	main(int argc, char **argv)
 {
-	t_mlx	mlx;
+	t_mlx	core;
 
 	if (argc != 2)
 		ft_sl_error("so_long : two arguments are needed\n");
-	ft_map_existence(argv, &mlx.map);
-	ft_win_size(&mlx);
-	mlx.mlx = mlx_init();
-	if (!mlx.mlx)
-		exit(1);
-	mlx.mov = 0;
-	mlx.win = mlx_new_window(mlx.mlx, mlx.screen_width, mlx.screen_height,
-			"-Droied-");
-	if (!mlx.win)
-		exit(1);
-	if (ft_strncmp(argv[1], "Cheems.ber", 9) == 0)
-		put_cheems(&mlx);
-	ft_render_daddy(&mlx, 0);
-	mlx_hook(mlx.win, 2, 0, ft_event_listener, &mlx);
-	mlx_hook(mlx.win, 17, 0L, ft_destroy_window, &mlx);
-	mlx_loop(mlx.mlx);
+	ft_map_existence(argv, &core.map);
+	begin_window(&core, 1280, 960);
+	// if (ft_strncmp(argv[1], "Cheems.ber", 9) == 0)
+		// put_cheems(&mlx);
+	mlx_loop_hook(core.mlx, game_init, &core);
+	mlx_close_hook(core.mlx, (void (*)(void *))mlx_close_window, &core);
+	mlx_loop(core.mlx);
 	return (0);
 }

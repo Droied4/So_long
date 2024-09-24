@@ -6,7 +6,7 @@
 /*   By: deordone <deordone@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:48:50 by deordone          #+#    #+#             */
-/*   Updated: 2024/02/21 17:48:58 by deordone         ###   ########.fr       */
+/*   Updated: 2024/09/24 19:13:26 by droied           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,6 @@ void	floodfill(t_map *checkmap, t_vector2d cor)
 
 int	ft_slpath_exist(t_map *checkmap, t_vector2d cor)
 {
-	int	aux;
-
-	aux = 0;
 	while (checkmap->map[cor.y])
 	{
 		cor.x = 0;
